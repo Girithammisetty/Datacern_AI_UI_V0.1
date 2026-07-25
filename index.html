@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Datacern AI — Decision Intelligence</title>
+<title>Datacern AI — AI does the work, a named human signs it</title>
 <meta name="description" content="Datacern AI puts a team of specialist agents to work on your industry's highest-stakes decisions. Agents draft, your people decide, and every correction trains the next model.">
-<meta name="theme-color" content="#f4f6fd">
+<meta name="theme-color" content="#FAF8F3">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6ef5' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M12 2v20M2 12h20M12 12 5 5M12 12l7-7M12 12l7 7M12 12l-7 7'/%3E%3Ccircle cx='12' cy='12' r='2.6'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Datacern AI — Decision Intelligence">
-<meta property="og:description" content="Datacern AI puts a team of specialist agents to work on your industry's highest-stakes decisions. Agents draft, your people decide, and every correction trains the next model.">
+<meta property="og:title" content="Datacern AI — AI does the work, a named human signs it">
+<meta property="og:description" content="Datacern works your regulated back-office queues — disputes, claims, alerts, invoices. Agents read the file and draft the recommendation; nothing takes effect until a named person approves it, no one can approve their own work, and every action leaves a receipt an examiner can follow.">
 <meta name="twitter:card" content="summary_large_image">
 <style>*{margin:0}html{-webkit-text-size-adjust:100%}img,svg{display:block;max-width:100%}</style>
 </head>
@@ -17,10 +17,27 @@
 
 <style>
 :root{
-  --bg:#f4f6fd; --card:#ffffff; --fg:#1b1e33; --muted:#5b6076;
-  --border:#e4e3f5; --primary:#4a56d2; --primary-fg:#ffffff;
+  /* Warm paper base. The page was built on a cold lavender-white (#f4f6fd)
+     which, against an indigo-only accent, read as one flat wash. Warming the
+     neutrals and keeping the accent cool gives contrast between paper and
+     brand instead of a single tint — and cream + indigo avoids the usual
+     cream + serif + terracotta pairing. */
+  --bg:#FAF8F3; --bg-2:#F3EFE6; --card:#ffffff; --fg:#1A1A26; --muted:#6C687A;
+  --border:#E9E2D4; --primary:#4a56d2; --primary-fg:#ffffff;
   --emerald:#a78bfa; --lime:#8ab4ff;
   --max:72rem;
+
+  /* Semantic palette — taken from the product's OWN states rather than picked
+     for decoration, so colour carries meaning instead of just adding variety:
+     cleared / awaiting a human / refused. Everything above this line is one
+     hue, which is exactly why the page read flat. */
+  --ok:#0e7c5a;      --ok-soft:#e3f4ec;   --ok-line:rgb(14 124 90 / .28);
+  --wait:#a76a10;    --wait-soft:#fdf1de;  --wait-line:rgb(167 106 16 / .28);
+  --stop:#b0452a;    --stop-soft:#fbe9e4;  --stop-line:rgb(176 69 42 / .3);
+
+  /* Ink band — one dark full-bleed section to break the pale run and give the
+     page a centre of gravity. */
+  --ink:#141733; --ink-2:#1d2145; --ink-fg:#eef0fb; --ink-muted:#a3a8cc;
 }
 *{box-sizing:border-box}
 body,.wr{background:var(--bg);color:var(--fg);
@@ -48,10 +65,14 @@ ul{margin:0;padding:0;list-style:none}
   background:linear-gradient(115deg,rgb(91 110 245 / .5),rgb(167 139 250 / .45),rgb(138 180 255 / .38),rgb(91 110 245 / .5));
   background-size:300% 300%;filter:blur(64px);animation:aurora 20s ease infinite}
 @keyframes aurora{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+/* Deeper, warmer hero wash: the original three lavender radials sat at a
+   similar value and read as one flat tint. Adding a green note (bottom-left)
+   and more contrast between stops gives the hero actual depth. */
 .mesh{position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(55rem 42rem at 10% -12%, rgb(91 110 245 / .26), transparent 60%),
-             radial-gradient(46rem 40rem at 92% -8%, rgb(167 139 250 / .20), transparent 58%),
-             radial-gradient(50rem 44rem at 58% 6%, rgb(138 180 255 / .12), transparent 62%)}
+  background:radial-gradient(52rem 40rem at 8% -14%, rgb(74 86 210 / .38), transparent 58%),
+             radial-gradient(44rem 38rem at 94% -10%, rgb(167 139 250 / .28), transparent 56%),
+             radial-gradient(40rem 34rem at 70% 96%, rgb(14 124 90 / .10), transparent 60%),
+             radial-gradient(56rem 46rem at 45% 30%, rgb(138 180 255 / .14), transparent 66%)}
 
 /* ---------- primitives ---------- */
 .wrap{max-width:var(--max);margin-inline:auto;padding-inline:1.5rem}
@@ -71,7 +92,7 @@ ul{margin:0;padding:0;list-style:none}
 .lede{color:var(--muted);max-width:42rem;font-size:1rem}
 .sec{padding-block:5rem;scroll-margin-top:5rem}
 .sec h2{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;margin-top:1.25rem}
-.sec-alt{border-top:1px solid rgb(224 227 245 / .9);background:#f3f4fc}
+.sec-alt{border-top:1px solid var(--border);background:var(--bg-2)}
 .icon{width:1.25rem;height:1.25rem;stroke:currentColor;fill:none;
   stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:.5rem;
@@ -86,7 +107,7 @@ ul{margin:0;padding:0;list-style:none}
 .reveal.in{opacity:1;transform:none}
 
 /* ---------- header ---------- */
-header{position:sticky;top:0;z-index:30;border-bottom:1px solid rgb(224 227 245 / .6);
+header{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--border);
   background:rgb(255 255 255 / .82);backdrop-filter:blur(12px)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:1rem;gap:1rem}
 .brand{display:flex;align-items:center;gap:.625rem;font-size:1.125rem;font-weight:700;letter-spacing:-.02em}
@@ -126,7 +147,7 @@ nav a:hover{color:var(--fg)}
 .acts div{flex:1;text-align:center;border-radius:.375rem;padding:.5rem;font-size:.75rem;font-weight:600}
 
 /* marquee */
-.marq-band{border-block:1px solid rgb(224 227 245 / .9);background:#f3f4fc;padding-block:1rem}
+.marq-band{border-block:1px solid var(--border);background:var(--bg-2);padding-block:1rem}
 .marq-head{display:flex;align-items:center;gap:.75rem}
 .marq-label{flex:none;display:flex;align-items:center;gap:.375rem;font-size:.75rem;font-weight:600;
   text-transform:uppercase;letter-spacing:.12em;color:var(--primary)}
@@ -136,7 +157,7 @@ nav a:hover{color:var(--fg)}
 .marq{display:flex;gap:.5rem;width:max-content;animation:marq 30s linear infinite}
 @keyframes marq{to{transform:translateX(-50%)}}
 .chip{flex:none;display:flex;align-items:center;gap:.375rem;border-radius:999px;
-  border:1px solid rgb(224 227 245 / .7);background:var(--bg);padding:.375rem .75rem;font-size:.75rem}
+  border:1px solid var(--border);background:var(--bg);padding:.375rem .75rem;font-size:.75rem}
 .chip .icon{width:.875rem;height:.875rem;color:var(--primary)}
 .chip b{font-weight:600}.chip span{color:var(--muted)}
 
@@ -154,7 +175,7 @@ nav a:hover{color:var(--fg)}
 .who{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--primary)}
 .card p{margin-top:.5rem;font-size:.875rem;color:var(--muted);line-height:1.6}
 .pills{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.375rem}
-.pill{border-radius:999px;border:1px solid rgb(224 227 245 / .7);background:rgb(238 240 251 / .6);
+.pill{border-radius:999px;border:1px solid var(--border);background:rgb(243 239 230 / .8);
   padding:.125rem .625rem;font-size:.6875rem;color:var(--muted)}
 .pill-more{padding:.125rem .25rem;font-size:.6875rem;font-weight:600;color:var(--primary)}
 .subhead{margin-top:2.25rem;font-size:.75rem;font-weight:600;text-transform:uppercase;
@@ -175,7 +196,7 @@ nav a:hover{color:var(--fg)}
 @media(min-width:1000px){.caps{grid-template-columns:1.1fr 1fr}}
 .tablist{display:grid;gap:.625rem}
 @media(min-width:600px){.tablist{grid-template-columns:1fr 1fr}}
-.tab{border-radius:.75rem;border:1px solid rgb(224 227 245 / .7);background:var(--card);
+.tab{border-radius:.75rem;border:1px solid var(--border);background:var(--card);
   padding:1rem;text-align:left;cursor:pointer;color:inherit;font:inherit;transition:.2s}
 .tab:hover{border-color:rgb(91 110 245 / .3)}
 .tab[aria-selected=true]{border-color:rgb(91 110 245 / .5);background:rgb(91 110 245 / .05)}
@@ -195,8 +216,8 @@ nav a:hover{color:var(--fg)}
 .panel ul{margin-top:1rem;display:grid;gap:.375rem}
 .panel li{display:flex;gap:.5rem;font-size:.875rem;color:var(--muted)}
 .panel li .icon{width:1rem;height:1rem;color:var(--primary);margin-top:.2rem}
-.viz{margin-top:1.5rem;border-radius:.75rem;border:1px solid rgb(224 227 245 / .6);
-  background:rgb(238 240 251 / .6);padding:1rem}
+.viz{margin-top:1.5rem;border-radius:.75rem;border:1px solid var(--border);
+  background:rgb(243 239 230 / .8);padding:1rem}
 .dots{margin-top:1.5rem;display:flex;justify-content:center;gap:.375rem}
 .dots button{height:6px;width:6px;border:0;border-radius:999px;background:var(--border);
   cursor:pointer;padding:0;transition:.25s}
@@ -205,7 +226,7 @@ nav a:hover{color:var(--fg)}
 /* viz internals */
 .v2{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
 .v2 .a{display:flex;align-items:center;gap:.5rem;border-radius:.5rem;
-  border:1px solid rgb(224 227 245 / .7);background:rgb(238 240 251 / .7);padding:.75rem;font-size:.75rem}
+  border:1px solid var(--border);background:rgb(243 239 230 / .75);padding:.75rem;font-size:.75rem}
 .v2 .a .ibox{width:1.5rem;height:1.5rem;border-radius:.375rem}
 .v2 .a .icon{width:.875rem;height:.875rem}
 .v2 .a b{font-weight:500}
@@ -215,7 +236,7 @@ nav a:hover{color:var(--fg)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .bub{border-radius:1rem;padding:.5rem .75rem;font-size:.75rem;line-height:1.5}
 .bub.me{margin-left:auto;width:80%;background:var(--primary);color:var(--primary-fg);border-bottom-right-radius:.125rem}
-.bub.ai{width:92%;border:1px solid rgb(224 227 245 / .7);background:rgb(238 240 251 / .7);
+.bub.ai{width:92%;border:1px solid var(--border);background:rgb(243 239 230 / .75);
   color:var(--muted);border-bottom-left-radius:.125rem;margin-top:.5rem}
 .bub.ai b{color:var(--fg);font-weight:500}
 .mini{display:flex;gap:.5rem;margin-top:.5rem}
@@ -225,8 +246,8 @@ nav a:hover{color:var(--fg)}
   padding:.25rem .5rem;font-size:.625rem}
 .ent{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
 .ent .src{display:grid;gap:.375rem}
-.ent .src div{border-radius:.375rem;border:1px solid rgb(224 227 245 / .7);
-  background:rgb(238 240 251 / .7);padding:.375rem .625rem;font-size:.6875rem;color:var(--muted)}
+.ent .src div{border-radius:.375rem;border:1px solid var(--border);
+  background:rgb(243 239 230 / .75);padding:.375rem .625rem;font-size:.6875rem;color:var(--muted)}
 .ent .out{border-radius:.75rem;border:1px solid rgb(91 110 245 / .4);background:rgb(91 110 245 / .05);
   padding:.75rem;text-align:center}
 .ent .out .icon{width:1.25rem;height:1.25rem;color:var(--primary);margin-inline:auto;display:block}
@@ -234,16 +255,16 @@ nav a:hover{color:var(--fg)}
 .ent .out .s{font-size:.625rem;color:var(--muted)}
 .rules{display:grid;gap:.375rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.6875rem}
 .rules div{display:flex;align-items:center;gap:.5rem;border-radius:.375rem;
-  border:1px solid rgb(224 227 245 / .7);background:rgb(238 240 251 / .7);padding:.375rem .625rem}
+  border:1px solid var(--border);background:rgb(243 239 230 / .75);padding:.375rem .625rem}
 .rules b{color:var(--primary)}.rules s{color:var(--muted);text-decoration:none}
 .rules em{margin-left:auto;font-style:normal;font-weight:500}
 .bars{display:flex;align-items:flex-end;gap:.375rem;height:90px}
 .bars i{flex:1;border-radius:3px 3px 0 0;background:rgb(91 110 245 / .7)}
 .kpis{margin-top:.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
-.kpis div{border-radius:.375rem;border:1px solid rgb(224 227 245 / .7);background:rgb(238 240 251 / .7);
+.kpis div{border-radius:.375rem;border:1px solid var(--border);background:rgb(243 239 230 / .75);
   padding:.375rem;text-align:center;font-size:.625rem;color:var(--muted)}
 .flow{display:flex;align-items:center;gap:.375rem;font-size:.6875rem;flex-wrap:wrap}
-.flow span{border-radius:.375rem;border:1px solid rgb(224 227 245 / .7);background:rgb(238 240 251 / .7);
+.flow span{border-radius:.375rem;border:1px solid var(--border);background:rgb(243 239 230 / .75);
   padding:.375rem .625rem;font-weight:500;color:var(--muted)}
 .flow span.on{border-color:rgb(91 110 245 / .4);background:rgb(91 110 245 / .1);color:var(--primary)}
 .flow .icon{width:.75rem;height:.75rem;color:var(--muted)}
@@ -259,7 +280,7 @@ th.di{border-radius:.75rem .75rem 0 0;background:rgb(91 110 245 / .1);color:var(
 th.di .sm{display:block;margin-top:.125rem;font-size:.75rem;font-weight:500;
   text-transform:none;letter-spacing:normal;color:rgb(91 110 245 / .8)}
 th.di .hd{display:flex;align-items:center;gap:.5rem}
-td{border-top:1px solid rgb(224 227 245 / .6);padding:1rem;color:var(--muted);vertical-align:top}
+td{border-top:1px solid var(--border);padding:1rem;color:var(--muted);vertical-align:top}
 td.dim{font-weight:600;color:var(--fg)}
 td.di{border-top-color:rgb(91 110 245 / .2);background:rgb(91 110 245 / .06);
   font-weight:500;color:var(--fg)}
@@ -281,7 +302,7 @@ tr:last-child td.di{border-radius:0 0 .75rem .75rem}
 .outs .pill{background:var(--card);padding:.25rem .75rem;font-size:.75rem}
 
 /* ---------- spotlight ---------- */
-.spot{border-top:1px solid rgb(224 227 245 / .6);scroll-margin-top:4rem}
+.spot{border-top:1px solid var(--border);scroll-margin-top:4rem}
 .spot-grid{display:grid;gap:2.5rem;align-items:start;padding-block:5rem}
 @media(min-width:1000px){.spot-grid{grid-template-columns:1fr 1fr}}
 .spot h3.hl{margin-top:1.5rem;font-size:clamp(1.375rem,3vw,1.875rem);font-weight:700;line-height:1.2}
@@ -302,7 +323,7 @@ tr:last-child td.di{border-radius:0 0 .75rem .75rem}
 
 /* ---------- workflow mock (spotlight "slides") ---------- */
 .wf-tabs{display:flex;gap:.375rem;margin-bottom:1.25rem}
-.wf-tab{flex:1;border-radius:.5rem;border:1px solid rgb(224 227 245 / .8);background:transparent;
+.wf-tab{flex:1;border-radius:.5rem;border:1px solid var(--border);background:transparent;
   padding:.5rem .625rem;font-size:.75rem;font-weight:600;color:var(--muted);cursor:pointer;
   transition:.2s;font:inherit}
 .wf-tab:hover{border-color:rgb(91 110 245 / .35)}
@@ -310,12 +331,12 @@ tr:last-child td.di{border-radius:0 0 .75rem .75rem}
 .wf-panel{display:none;animation:swap .4s ease}
 .wf-panel.on{display:block}
 .wf-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1rem}
-.wf-kpis div{border-radius:.5rem;border:1px solid rgb(224 227 245 / .7);background:rgb(238 240 251 / .6);padding:.5rem .375rem;text-align:center}
+.wf-kpis div{border-radius:.5rem;border:1px solid var(--border);background:rgb(243 239 230 / .8);padding:.5rem .375rem;text-align:center}
 .wf-kpis b{display:block;font-size:.9375rem;font-weight:700;color:var(--fg)}
 .wf-kpis span{display:block;margin-top:.125rem;font-size:.625rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;line-height:1.3}
 .wf-rows{display:grid;gap:.5rem}
-.wf-row{display:flex;align-items:center;gap:.5rem;border-radius:.5rem;border:1px solid rgb(224 227 245 / .7);
-  background:rgb(238 240 251 / .5);padding:.5rem .625rem;transition:transform .2s,box-shadow .2s}
+.wf-row{display:flex;align-items:center;gap:.5rem;border-radius:.5rem;border:1px solid var(--border);
+  background:rgb(243 239 230 / .6);padding:.5rem .625rem;transition:transform .2s,box-shadow .2s}
 .wf-row:hover{transform:translateX(2px);box-shadow:0 8px 20px -14px rgb(91 110 245 / .5)}
 .wf-row .id{flex:none;width:5rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.6875rem;font-weight:600;color:var(--fg)}
 .wf-row .ds{flex:1;min-width:0;font-size:.75rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -331,7 +352,7 @@ tr:last-child td.di{border-radius:0 0 .75rem .75rem}
 /* ---------- lane switcher (sub-vertical tabs within a spotlight) ---------- */
 .lanes{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.75rem}
 .lane{display:inline-flex;align-items:center;border-radius:999px;
-  border:1px solid rgb(224 227 245 / .9);background:var(--card);
+  border:1px solid var(--border);background:var(--card);
   padding:.45rem .9rem;font-size:.8125rem;font-weight:600;color:var(--muted);
   cursor:pointer;transition:.2s;font:inherit}
 .lane:hover{border-color:rgb(91 110 245 / .45);color:var(--fg)}
@@ -372,7 +393,7 @@ tr:last-child td.di{border-radius:0 0 .75rem .75rem}
 .faq{max-width:48rem;margin-inline:auto}
 .faq h2{text-align:center}
 .acc{margin-top:2rem;border-radius:1rem;overflow:hidden}
-.acc .qa+.qa{border-top:1px solid rgb(224 227 245 / .6)}
+.acc .qa+.qa{border-top:1px solid var(--border)}
 .acc button{display:flex;width:100%;align-items:center;justify-content:space-between;gap:1rem;
   padding:1rem 1.25rem;text-align:left;background:none;border:0;color:inherit;
   font:inherit;font-size:.875rem;font-weight:600;cursor:pointer}
@@ -384,12 +405,12 @@ tr:last-child td.di{border-radius:0 0 .75rem .75rem}
 .acc .a p{padding:0 1.25rem 1rem;font-size:.875rem;color:var(--muted);line-height:1.7}
 
 /* ---------- closing ---------- */
-.close{position:relative;overflow:hidden;border-top:1px solid rgb(224 227 245 / .6);text-align:center}
+.close{position:relative;overflow:hidden;border-top:1px solid var(--border);text-align:center}
 .close .inner{display:flex;flex-direction:column;align-items:center;gap:1.25rem;padding-block:6rem}
 .close h2{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700}
 .close p{max-width:36rem;color:var(--muted)}
 .close .logo{filter:drop-shadow(0 0 28px rgb(91 110 245 / .6))}
-footer{border-top:1px solid rgb(224 227 245 / .6)}
+footer{border-top:1px solid var(--border)}
 footer .wrap{display:flex;flex-direction:column;align-items:center;justify-content:space-between;
   gap:.5rem;padding-block:1.5rem;font-size:.75rem;color:var(--muted);text-align:center}
 @media(min-width:640px){footer .wrap{flex-direction:row}}
@@ -423,6 +444,66 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
   <symbol id="i-trail" viewBox="0 0 24 24"><circle cx="5" cy="6" r="1.7"/><circle cx="5" cy="12" r="1.7"/><circle cx="5" cy="18" r="1.7"/><path d="M9 6h11M9 12h11M9 18h11"/></symbol>
   <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17.5" cy="8.5" r="2.4"/><path d="M15.5 12.2a4.6 4.6 0 0 1 5.2 4.4"/></symbol>
   <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="3.4"/><path d="M12 1.8v3.2M12 19v3.2M1.8 12h3.2M19 12h3.2"/></symbol>
+
+  <!-- ===== Datacern icon family =====================================
+       Drawn from the logo's own grammar rather than a generic stroke set:
+       every mark is built from NODES (filled dots = a thing of record) and
+       CONVERGING STROKES (inputs weighed into one decision), on the same 24px
+       grid and 1.6 stroke as the wordmark. The visual rule is consistent —
+       an unfilled node has not been decided yet; a filled node is on the
+       record. That makes the iconography say what the product says. -->
+
+  <!-- a drafted proposal: evidence converges into an open (undecided) node -->
+  <symbol id="d-propose" viewBox="0 0 24 24">
+    <path d="M3.2 6.4h5.2M3.2 12h4M3.2 17.6h5.2"/>
+    <path d="M8.4 6.4 14 11M7.2 12h6.4M8.4 17.6 14 13"/>
+    <circle cx="16.6" cy="12" r="2.9"/>
+  </symbol>
+  <!-- awaiting a human: node held by a pause bar -->
+  <symbol id="d-await" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="7.6"/>
+    <path d="M10.2 9.4v5.2M13.8 9.4v5.2"/>
+    <path d="M12 1.9v2.5"/>
+  </symbol>
+  <!-- signed: node filled + the approving mark -->
+  <symbol id="d-signed" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="7.6"/>
+    <path d="m8.4 12.2 2.6 2.6 4.8-5.2"/>
+    <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/>
+  </symbol>
+  <!-- four-eyes: two distinct people resolving to one record -->
+  <symbol id="d-foureyes" viewBox="0 0 24 24">
+    <circle cx="5.4" cy="7.2" r="2.5"/><circle cx="5.4" cy="16.8" r="2.5"/>
+    <path d="M7.9 8.4 14 11.2M7.9 15.6 14 12.8"/>
+    <circle cx="17" cy="12" r="2.9" fill="currentColor" stroke="none"/>
+  </symbol>
+  <!-- the trail: a chain of records, each one permanent -->
+  <symbol id="d-trail" viewBox="0 0 24 24">
+    <circle cx="4.6" cy="12" r="2.1" fill="currentColor" stroke="none"/>
+    <circle cx="12" cy="12" r="2.1" fill="currentColor" stroke="none"/>
+    <circle cx="19.4" cy="12" r="2.1" fill="currentColor" stroke="none"/>
+    <path d="M6.7 12h3.2M14.1 12h3.2"/>
+    <path d="M4.6 5.6v2.6M12 5.6v2.6M19.4 5.6v2.6"/>
+  </symbol>
+  <!-- the queue with a clock on it -->
+  <symbol id="d-queue" viewBox="0 0 24 24">
+    <path d="M3 6.2h9M3 12h6.4M3 17.8h9"/>
+    <circle cx="17.4" cy="12" r="4.4"/>
+    <path d="M17.4 9.8V12l1.6 1.2"/>
+  </symbol>
+  <!-- refused / fails closed: the contract that will not proceed -->
+  <symbol id="d-refuse" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="7.6"/>
+    <path d="M7.6 7.6 16.4 16.4"/>
+    <path d="M3.4 12H1.8M22.2 12h-1.6"/>
+  </symbol>
+  <!-- the binding contract: two shapes that must match before anything runs -->
+  <symbol id="d-contract" viewBox="0 0 24 24">
+    <path d="M4.4 5.2v13.6M19.6 5.2v13.6"/>
+    <path d="M4.4 5.2h3.2M4.4 18.8h3.2M19.6 5.2h-3.2M19.6 18.8h-3.2"/>
+    <circle cx="12" cy="12" r="2.6"/>
+    <path d="M9.4 12H7.2M16.8 12h-2.2"/>
+  </symbol>
 </defs>
 </svg>
 
@@ -437,8 +518,9 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
     <nav>
       <a href="#industries">Industries</a>
       <a href="#capabilities">Platform</a>
-      <a href="#difference">Why DI</a>
-      <a href="#how">How it works</a>
+      <a href="#difference">Why not BI</a>
+      <a href="#value">Value</a>
+      <a href="#adopt">Get started</a>
       <a href="#faq">FAQ</a>
     </nav>
     <a class="btn" href="#contact">Request a demo</a>
@@ -450,14 +532,14 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
   <div class="mesh" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow"><svg class="icon" style="width:.875rem;height:.875rem"><use href="#i-spark"/></svg>AI decision intelligence</span>
-      <h1>AI agents that decide,<br>with your experts <span class="grad">in command.</span></h1>
-      <p class="sub">Datacern AI puts a team of specialist agents to work on your industry's highest-stakes decisions — health claims, financial-crime alerts, insurance losses, back-office adjudication. Agents draft, a copilot assists, your people decide, and every correction trains the next model.</p>
+      <span class="eyebrow"><svg class="icon" style="width:.875rem;height:.875rem"><use href="#i-spark"/></svg>Governed AI for regulated operations</span>
+      <h1>AI does the work.<br>A named human <span class="grad">signs it.</span></h1>
+      <p class="sub">Datacern works your regulated back-office queues — card disputes, health claims, financial-crime alerts, insurance losses, supplier invoices. Agents read the file, apply your rules and draft the recommendation. Nothing takes effect until a named person approves it, no one can approve their own work, and every action leaves a receipt an examiner can follow.</p>
       <div class="cta-row">
         <a class="btn btn-lg" href="#contact">Request a demo <svg class="icon" style="width:1rem;height:1rem"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-lg btn-ghost" href="#industries">Explore by industry</a>
+        <a class="btn btn-lg btn-ghost" href="#value">See the value model</a>
       </div>
-      <p class="lede" style="margin-top:1.5rem;font-size:.875rem">Governed end to end — every determination has evidence, an owner, and a trail.</p>
+      <p class="lede" style="margin-top:1.5rem;font-size:.875rem">Your team clears more of the queue. Compliance still gets a named approver on every action.</p>
     </div>
 
     <div class="mock">
@@ -541,9 +623,9 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
 <section id="difference" class="sec-alt" style="border-bottom:0">
   <div class="wrap sec" id="difference-inner">
     <div class="reveal">
-      <span class="eyebrow"><svg class="icon" style="width:.875rem;height:.875rem"><use href="#i-spark"/></svg>Why decision intelligence</span>
-      <h2>A different category from BI and AI</h2>
-      <p class="lede" style="margin-top:.75rem">Business intelligence tells you what happened. AI models predict what might. Decision intelligence makes the call — governed, evidenced and accountable — and learns from every one.</p>
+      <span class="eyebrow"><svg class="icon" style="width:.875rem;height:.875rem"><use href="#i-spark"/></svg>Where the work actually lands</span>
+      <h2>Ask any vendor for the record of one decision</h2>
+      <p class="lede" style="margin-top:.75rem">Who proposed it, who approved it, what evidence they saw, and what changed in the source system. A dashboard holds data <em>about</em> your business; a model returns a score. Datacern holds the action itself, and the name of the person answerable for it. That question is the whole boundary — and it takes thirty seconds to ask.</p>
     </div>
     <div class="tscroll reveal">
       <table>
@@ -551,12 +633,128 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
           <th style="width:22%">By this measure</th>
           <th class="co">Traditional BI</th>
           <th class="co">AI / ML models</th>
-          <th class="co di"><span class="hd"><svg class="icon" style="width:1rem;height:1rem"><use href="#i-logo"/></svg>Datacern</span><span class="sm">Decision Intelligence</span></th>
+          <th class="co di"><span class="hd"><svg class="icon" style="width:1rem;height:1rem"><use href="#i-logo"/></svg>Datacern</span><span class="sm">Approved actions</span></th>
         </tr></thead>
         <tbody id="compare"></tbody>
       </table>
     </div>
-    <p class="lede" style="margin-top:1.25rem;font-size:.875rem">Keep your dashboards and your models — Datacern adds a governed decision layer on top, so the insight actually becomes an auditable action.</p>
+    <p class="lede" style="margin-top:1.25rem;font-size:.875rem">Keep your BI and your models. Datacern doesn't replace them — it picks up where they stop, at the point someone has to actually do something and answer for it.</p>
+  </div>
+</section>
+
+<!-- ============ VALUE MODEL ============
+     GTM note: enterprises fund throughput and headcount, not "platforms".
+     Governance is what makes the purchase ALLOWED; cleared work is what makes
+     it FUNDED. Both live here — in that order. Rule #1: the calculator ships
+     with NO benchmark savings, because we have no customer data to support
+     one. Every number below is the visitor's own input. -->
+<style>
+.vgrid{display:grid;gap:1.5rem;margin-top:2.5rem}
+@media(min-width:900px){.vgrid{grid-template-columns:1fr 1fr}}
+/* Each card carries its own semantic colour on a top rail + icon chip, so the
+   two-budget idea is legible before a word is read. */
+.vcard{padding:0;height:100%;overflow:hidden}
+.vcard .rail{height:4px}
+.vcard .in{padding:1.75rem}
+.vcard .chip{display:inline-flex;align-items:center;justify-content:center;
+  width:2.5rem;height:2.5rem;border-radius:.75rem;margin-bottom:1rem}
+.vcard .chip .icon{width:1.375rem;height:1.375rem}
+.vcard h3{font-size:1.25rem;font-weight:700;margin:0 0 .25rem;letter-spacing:-.02em}
+.vtag{font-size:.6875rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em}
+.vcard p{margin-top:.75rem;font-size:.9375rem;line-height:1.65;color:var(--muted)}
+.vcard .sig{margin-top:1.125rem;padding-top:.9375rem;border-top:1px dashed var(--border);
+  font-size:.8125rem;line-height:1.55;color:var(--muted)}
+.v-fund .rail{background:linear-gradient(90deg,var(--ok),#3fb389)}
+.v-fund .chip{background:var(--ok-soft);color:var(--ok)}
+.v-fund .vtag{color:var(--ok)}
+.v-allow .rail{background:linear-gradient(90deg,var(--primary),var(--emerald))}
+.v-allow .chip{background:rgb(74 86 210 / .1);color:var(--primary)}
+.v-allow .vtag{color:var(--primary)}
+
+/* Calculator — inputs stay light, results sit on ink so the numbers read as
+   the payoff rather than as more form furniture. */
+.calc{margin-top:2.5rem;padding:0;overflow:hidden}
+.calc-head{padding:1.75rem 1.75rem 0}
+.calc-in{display:grid;gap:1.125rem;padding:1.25rem 1.75rem 1.75rem}
+@media(min-width:760px){.calc-in{grid-template-columns:repeat(4,1fr)}}
+.fld label{display:block;font-size:.75rem;font-weight:600;color:var(--fg);margin-bottom:.375rem}
+.fld input{width:100%;border:1px solid var(--border);border-radius:.625rem;padding:.625rem .75rem;
+  font:inherit;font-size:1.0625rem;font-weight:600;background:var(--bg);color:var(--fg);
+  transition:border-color .2s,box-shadow .2s}
+.fld input:hover{border-color:rgb(74 86 210 / .45)}
+.fld input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgb(74 86 210 / .16)}
+.fld span{display:block;margin-top:.3125rem;font-size:.6875rem;color:var(--muted)}
+.calc-out{display:grid;gap:1.5rem;padding:1.75rem;
+  background:linear-gradient(135deg,var(--ink) 0%,var(--ink-2) 100%);position:relative}
+.calc-out::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(30rem 16rem at 15% 0%, rgb(122 138 255 / .22), transparent 65%),
+             radial-gradient(24rem 14rem at 88% 110%, rgb(63 179 137 / .18), transparent 62%)}
+@media(min-width:700px){.calc-out{grid-template-columns:repeat(3,1fr)}}
+.metric{position:relative}
+.metric .mv{font-size:clamp(2rem,4.5vw,2.75rem);font-weight:800;letter-spacing:-.035em;
+  line-height:1;background:linear-gradient(180deg,#ffffff,#c9d0ff);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  font-variant-numeric:tabular-nums}
+.metric .ml{font-size:.8125rem;color:var(--ink-muted);margin-top:.5rem;line-height:1.4}
+.honest{margin:0;padding:1.125rem 1.75rem;border-top:1px solid rgb(255 255 255 / .1);
+  background:rgb(20 23 51 / .96);font-size:.8125rem;line-height:1.65;color:var(--ink-muted)}
+.honest b{color:#fff}
+</style>
+<section id="value" class="sec wrap" style="scroll-margin-top:5rem">
+  <div class="reveal">
+    <span class="eyebrow"><svg class="icon" style="width:.875rem;height:.875rem"><use href="#d-queue"/></svg>The value model</span>
+    <h2>Two reasons to buy. They come from different budgets.</h2>
+    <p class="lede" style="margin-top:.75rem">Most AI pitches confuse these, then lose the deal when finance asks what it returns. Operations funds the first. Compliance clears the second. You need both to get a signature.</p>
+  </div>
+
+  <div class="vgrid">
+    <div class="reveal"><div class="glass vcard v-fund">
+      <div class="rail"></div>
+      <div class="in">
+        <span class="chip"><svg class="icon"><use href="#d-queue"/></svg></span>
+        <span class="vtag">What gets it funded</span>
+        <h3>The queue moves faster</h3>
+        <p>Your specialists stop starting from a blank page. The agent has already read the file, pulled the matching rule, drafted the recommendation and cited the evidence. The reviewer accepts, adjusts or escalates — and the backlog stops growing while the deadline clock is still green.</p>
+        <p class="sig"><strong style="color:var(--fg)">Who signs:</strong> the operations leader whose team carries the queue — and whose budget is measured in salaried hours, not software seats.</p>
+      </div>
+    </div></div>
+    <div class="reveal"><div class="glass vcard v-allow">
+      <div class="rail"></div>
+      <div class="in">
+        <span class="chip"><svg class="icon"><use href="#d-foureyes"/></svg></span>
+        <span class="vtag">What makes it allowed</span>
+        <h3>Every action has a named approver</h3>
+        <p>Nothing the AI produces takes effect on its own. A named person approves, the system refuses to let that person approve their own request, and sensitive actions require a second, distinct reviewer. The complete chain — proposer, approver, evidence, outcome — is recorded and exportable.</p>
+        <p class="sig"><strong style="color:var(--fg)">Who clears it:</strong> the compliance officer who would otherwise block the deployment. This isn't the ROI — it's the permission slip.</p>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="glass glow calc reveal">
+    <div class="calc-head">
+      <span class="eyebrow"><svg class="icon" style="width:.875rem;height:.875rem"><use href="#d-propose"/></svg>Work it out with your own numbers</span>
+      <h3 style="margin:.75rem 0 0;font-size:1.375rem;font-weight:700;letter-spacing:-.02em">What one queue costs you today</h3>
+    </div>
+    <div class="calc-in">
+      <div class="fld"><label for="c-vol">Cases per month</label>
+        <input id="c-vol" type="number" min="0" step="100" value="4000" inputmode="numeric">
+        <span>One queue, not the whole department</span></div>
+      <div class="fld"><label for="c-min">Minutes per case today</label>
+        <input id="c-min" type="number" min="0" step="1" value="22" inputmode="numeric">
+        <span>Reading, checking, writing it up</span></div>
+      <div class="fld"><label for="c-cost">Loaded cost per hour</label>
+        <input id="c-cost" type="number" min="0" step="1" value="45" inputmode="numeric">
+        <span>Salary + benefits + overhead</span></div>
+      <div class="fld"><label for="c-save">Minutes saved per case</label>
+        <input id="c-save" type="number" min="0" step="1" value="8" inputmode="numeric">
+        <span>Your estimate — see the note below</span></div>
+    </div>
+    <div class="calc-out">
+      <div class="metric"><div class="mv" id="m-hours">—</div><div class="ml">hours returned per month</div></div>
+      <div class="metric"><div class="mv" id="m-money">—</div><div class="ml">equivalent monthly cost of that time</div></div>
+      <div class="metric"><div class="mv" id="m-fte">—</div><div class="ml">full-time-equivalents of capacity</div></div>
+    </div>
+    <p class="honest"><b>Rule #1 — these are your numbers, not our claims.</b> We ship no benchmark savings figure, no "up to X%" and no case-study percentages, because we have no customer data that would make one honest. The last field is deliberately yours to set: run it at a number you'd defend to your own CFO, then make us prove it in a pilot on one queue.</p>
   </div>
 </section>
 
@@ -577,9 +775,150 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
   </div>
 </section>
 
+<!-- ============ THE RECEIPT (ink band) ============
+     One dark full-bleed section. It exists for two reasons: the page was an
+     unbroken run of pale lavender and had no centre of gravity, and this is the
+     single claim a competitor can't answer — so it earns the emphasis. The
+     chain shown is the real object model: proposal -> approver -> execution
+     -> audit record. -->
+<style>
+.ink{background:var(--ink);color:var(--ink-fg);position:relative;overflow:hidden}
+.ink::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(48rem 30rem at 12% -10%, rgb(122 138 255 / .28), transparent 60%),
+             radial-gradient(40rem 28rem at 90% 108%, rgb(63 179 137 / .16), transparent 60%)}
+.ink>*{position:relative}
+.ink .eyebrow{border-color:rgb(255 255 255 / .22);background:rgb(255 255 255 / .08);color:#c3caff}
+.ink h2{color:#fff}
+.ink .lede{color:var(--ink-muted)}
+.chain{display:grid;gap:.75rem;margin-top:3rem}
+@media(min-width:900px){.chain{grid-template-columns:repeat(4,1fr);gap:1rem}}
+.lnk{border-radius:.875rem;padding:1.25rem 1.25rem 1.375rem;
+  background:rgb(255 255 255 / .05);border:1px solid rgb(255 255 255 / .12);position:relative}
+.lnk .st{display:inline-flex;align-items:center;gap:.4375rem;font-size:.625rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.1em;padding:.1875rem .5rem;border-radius:999px}
+.lnk.s1 .st{background:rgb(122 138 255 / .18);color:#a8b3ff}
+.lnk.s2 .st{background:rgb(233 173 74 / .18);color:#f0be7a}
+.lnk.s3 .st{background:rgb(63 179 137 / .18);color:#6fd7ae}
+.lnk.s4 .st{background:rgb(255 255 255 / .12);color:#cfd4f2}
+.lnk h4{margin:.75rem 0 0;font-size:1rem;font-weight:700;color:#fff}
+.lnk p{margin-top:.375rem;font-size:.8125rem;line-height:1.6;color:var(--ink-muted)}
+.lnk .who{margin-top:.75rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:.6875rem;color:#8f96c4}
+@media(min-width:900px){
+  .lnk:not(:last-child)::after{content:"";position:absolute;top:50%;right:-.6875rem;
+    width:.6875rem;height:1px;background:rgb(255 255 255 / .2)}
+}
+.ink-note{margin-top:2.5rem;padding:1.25rem 1.5rem;border-radius:.875rem;
+  border:1px solid rgb(255 255 255 / .14);background:rgb(255 255 255 / .04);
+  font-size:.9375rem;line-height:1.7;color:var(--ink-muted)}
+.ink-note b{color:#fff}
+</style>
+<section class="ink">
+  <div class="wrap sec">
+    <div class="reveal">
+      <span class="eyebrow"><svg class="icon" style="width:.875rem;height:.875rem"><use href="#d-trail"/></svg>The receipt</span>
+      <h2 style="margin-top:1.25rem;font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700">One decision, four permanent records</h2>
+      <p class="lede" style="margin-top:.75rem;max-width:44rem">This is the chain a competitor has to be able to produce. A dashboard can show you that disputes are rising; it cannot tell an examiner who decided this one, on what evidence, and under whose authority.</p>
+    </div>
+    <div class="chain">
+      <div class="reveal"><div class="lnk s1"><span class="st"><svg class="icon" style="width:.8125rem;height:.8125rem"><use href="#d-propose"/></svg>Step 1 · Proposed</span>
+        <h4>The agent drafts</h4>
+        <p>Reads the case, applies your rule, writes the recommendation and attaches the evidence it used. It cannot execute — the output is a proposal object, not an action.</p>
+        <div class="who">actor: agent · effect: none yet</div></div></div>
+      <div class="reveal"><div class="lnk s2"><span class="st"><svg class="icon" style="width:.8125rem;height:.8125rem"><use href="#d-await"/></svg>Step 2 · Awaiting</span>
+        <h4>It waits for a person</h4>
+        <p>The proposal sits in an approval queue with its reasoning and a system-generated summary of what will actually happen — so persuasive wording can't disguise a risky action.</p>
+        <div class="who">actor: none · effect: still none</div></div></div>
+      <div class="reveal"><div class="lnk s3"><span class="st"><svg class="icon" style="width:.8125rem;height:.8125rem"><use href="#d-signed"/></svg>Step 3 · Approved</span>
+        <h4>A named human signs</h4>
+        <p>Someone with the authority approves — and never the person who requested it. Sensitive actions require a second, distinct reviewer before anything moves.</p>
+        <div class="who">actor: a named user · effect: authorised</div></div></div>
+      <div class="reveal"><div class="lnk s4"><span class="st"><svg class="icon" style="width:.8125rem;height:.8125rem"><use href="#d-trail"/></svg>Step 4 · Recorded</span>
+        <h4>The trail outlives the case</h4>
+        <p>Proposer, approver, evidence, arguments and outcome are written to a tamper-evident log you can export into your own security tooling.</p>
+        <div class="who">actor: the platform · effect: permanent</div></div></div>
+    </div>
+    <p class="ink-note reveal"><b>Try this on any vendor, including us.</b> Ask to see the complete record of one decision — who proposed it, who approved it, what evidence they saw, and what changed in the source system. It takes thirty seconds to ask and it separates a reporting tool from a system of accountability.</p>
+  </div>
+</section>
+
+<!-- ============ ADOPT ============
+     GTM note: the fastest way to lose a regulated buyer is to be vague about
+     what THEY have to do. This section is deliberately specific about the work
+     on their side — including the part where the install refuses to proceed. -->
+<style>
+.wk{display:grid;gap:1.25rem;margin-top:2.5rem}
+@media(min-width:900px){.wk{grid-template-columns:repeat(4,1fr)}}
+/* Week cards read as a progression: the numeral is a filled disc, and the
+   accent walks from indigo (setup) to green (live) so the sequence is visible
+   at a glance rather than only in the text. */
+.wkc{padding:1.5rem;height:100%;position:relative}
+.wkc .wn{display:inline-flex;align-items:center;justify-content:center;
+  min-width:4.25rem;padding:.25rem .625rem;border-radius:999px;
+  font-size:.6875rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  background:rgb(74 86 210 / .1);color:var(--primary)}
+.wk>div:nth-child(3) .wkc .wn{background:var(--wait-soft);color:var(--wait)}
+.wk>div:nth-child(4) .wkc .wn{background:var(--ok-soft);color:var(--ok)}
+.wkc h3{margin:.5rem 0 0;font-size:1rem;font-weight:700}
+.wkc p{margin-top:.5rem;font-size:.8125rem;line-height:1.6;color:var(--muted)}
+.wkc .own{margin-top:.875rem;font-size:.6875rem;font-weight:600;color:var(--fg);
+  border-top:1px solid var(--border);padding-top:.625rem}
+.need{display:grid;gap:1rem;margin-top:1.5rem}
+@media(min-width:820px){.need{grid-template-columns:repeat(3,1fr)}}
+.need .n{padding:1.25rem 1.375rem;border-radius:.875rem;border:1px solid var(--border);background:var(--bg)}
+.need .n h4{margin:0;font-size:.9375rem;font-weight:700}
+.need .n p{margin-top:.375rem;font-size:.8125rem;line-height:1.6;color:var(--muted)}
+.refuse{margin-top:1.75rem;padding:1.25rem 1.375rem;border-radius:.875rem;
+  border:1px solid rgb(197 90 62 / .35);background:rgb(197 90 62 / .06)}
+.refuse h4{margin:0;font-size:.9375rem;font-weight:700;color:#a8442b}
+.refuse p{margin-top:.5rem;font-size:.8125rem;line-height:1.65;color:var(--muted)}
+.refuse code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.75rem;
+  background:rgb(0 0 0 / .05);padding:.0625rem .3125rem;border-radius:.25rem;color:var(--fg)}
+</style>
+<section id="adopt" class="sec wrap" style="scroll-margin-top:5rem">
+  <div class="reveal">
+    <span class="eyebrow"><svg class="icon" style="width:.875rem;height:.875rem"><use href="#d-contract"/></svg>Adopting it</span>
+    <h2>Start on one queue, not a transformation programme</h2>
+    <p class="lede" style="margin-top:.75rem">You do not replace a case system to try this. Pick the queue with the worst deadline pressure, run the agents in draft-only mode beside your team, and compare. If the drafts aren't good enough, you've lost a month and no customer was ever affected — because nothing the AI produced could take effect without a person approving it.</p>
+  </div>
+
+  <div class="wk">
+    <div class="reveal"><div class="glass wkc"><span class="wn">Week 1</span>
+      <h3>Pick the queue, land the data</h3>
+      <p>One workflow with a real clock on it. You supply the datasets the workflow needs; we stand up an isolated tenant for your organisation.</p>
+      <div class="own">Yours: a data extract · Ours: the environment</div></div></div>
+    <div class="reveal"><div class="glass wkc"><span class="wn">Week 2</span>
+      <h3>Install the workflow, tune the rules</h3>
+      <p>The pack brings the outcome codes, the triage table and the dashboards for that workflow. Your supervisor reads every rule in plain language and changes the thresholds to yours — they are your policy, not our defaults.</p>
+      <div class="own">Yours: the thresholds · Ours: the starting content</div></div></div>
+    <div class="reveal"><div class="glass wkc"><span class="wn">Week 3</span>
+      <h3>Run it in draft-only</h3>
+      <p>Agents draft on live work; nobody acts on the output. Compare the drafted recommendation against what your specialists actually did. That agreement rate is the number you take to your sponsor.</p>
+      <div class="own">Yours: the verdict · Ours: the evidence</div></div></div>
+    <div class="reveal"><div class="glass wkc"><span class="wn">Week 4</span>
+      <h3>Go live on a slice</h3>
+      <p>Turn on approvals for one segment. Every action now needs a named approver, sensitive ones a second reviewer, and the audit trail runs from day one — not as a later phase.</p>
+      <div class="own">Yours: the approvers · Ours: the trail</div></div></div>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem">
+    <h3 style="font-size:1.125rem;font-weight:700">What you need to bring</h3>
+    <p class="lede" style="margin-top:.5rem;font-size:.875rem">Short list, deliberately. If you can't produce these, the honest answer is that you aren't ready yet — and we'd rather say so before a pilot than during one.</p>
+    <div class="need">
+      <div class="n"><h4>The data the workflow reads</h4><p>A handful of tables with the fields the decision actually depends on — the identifier, the amounts, the dates and the deadline. Export, feed or file upload; we don't need your whole warehouse.</p></div>
+      <div class="n"><h4>Your rules and thresholds</h4><p>The cut-offs your supervisors already apply, even if they currently live in a spreadsheet or someone's head. Writing them down is usually the most valuable week of the pilot regardless of what you buy.</p></div>
+      <div class="n"><h4>Two named people</h4><p>One to work the queue, one to approve. Four-eyes needs two humans by definition — the platform will not let a single person do both, and no configuration setting turns that off.</p></div>
+    </div>
+    <div class="refuse">
+      <h4><svg class="icon" style="width:1.0625rem;height:1.0625rem;display:inline-block;vertical-align:-3px;margin-right:.375rem"><use href="#d-refuse"/></svg>And one thing we do on purpose: the install refuses</h4>
+      <p>If the data you supply is missing a field the workflow depends on, the install <b>stops and names every missing column</b> — it does not proceed with a half-configured workflow that silently produces wrong recommendations. You'll see <code>requires_binding</code> and an exact list. Most vendors would call that a bad first impression. We'd rather fail in your test environment than in front of your examiner.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ SPOTLIGHTS ============ -->
 <div id="spotlights"></div>
-<div style="border-top:1px solid rgb(224 227 245 / .6)">
+<div style="border-top:1px solid var(--border)">
   <p style="max-width:36rem;margin-inline:auto;padding:3rem 1.5rem;text-align:center;font-size:.875rem;color:var(--muted)">
     <b style="color:var(--fg)">…and your operation next.</b> New solutions install onto the same governed platform — your teams learn the tool once and reuse it everywhere.
   </p>
@@ -615,8 +954,8 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
 
 <footer>
   <div class="wrap">
-    <span>Datacern AI — Decision Intelligence platform</span>
-    <span>AI proposes. People decide. The platform remembers.</span>
+    <span>Datacern AI — governed AI for regulated operations</span>
+    <span>AI proposes. A named person approves. The platform remembers.</span>
   </div>
 </footer>
 </div>
@@ -752,7 +1091,9 @@ const STEPS=[["AI does the reading","Agents gather the evidence, check it agains
 const TRUST=[["Your data stays yours","Cleanly isolated for your organization — never mingled, never shared."],["Least-privilege access","Everyone sees and does exactly what their role allows, and nothing more."],["A second set of eyes","The changes that matter most require another reviewer to sign off before they go live."],["A tamper-evident trail","Who decided what, when, and on what evidence — captured for every action, ready for any review."]];
 
 const FAQ=[
-["What is decision intelligence?","It's the discipline — and this platform — of turning your data, your policy and AI into governed, auditable decisions at scale. Not a dashboard that reports the past or a model that predicts it: a system that makes the call, attaches the evidence, and keeps a person accountable for every one."],
+["What does Datacern actually do?","It works your regulated back-office queues — disputes, claims, alerts, invoices — and keeps a named person accountable for every outcome. Agents read the case, apply your rules and draft the recommendation with its evidence. A person approves it, someone other than the requester signs anything sensitive, and the whole chain is recorded. The test: ask any vendor for the complete record of one decision — who proposed it, who approved it, what evidence they saw, what changed in the source system. Producing that record is what this platform is for."],
+["Which budget does this come out of?","Usually operations, not BI. The value that gets it funded is throughput — your team clears more of the queue before the deadline, with the reading and drafting already done. The governance is what gets it approved rather than what gets it paid for: it removes the objection that blocks AI in a regulated process. If you're being asked to justify it as an analytics purchase, the framing has gone wrong."],
+["We already have BI. Do we replace it?","No, and you shouldn't. BI tells you the queue is 4,000 deep and slipping. It won't work a single case, hold an approval, or tell an examiner who decided. Keep your dashboards; Datacern picks up where they stop."],
 ["What exactly is “agentic AI”?","A chatbot answers a question; a model returns a score. An agentic AI takes on multi-step work: it reads the evidence, checks it against your rules, uses tools to gather what it needs, and drafts a decision or action — then hands it to a person to approve. Datacern runs a team of these specialist agents (triage, analytics, governance and more), each scoped to what it's allowed to see and do. They propose; they never act on their own."],
 ["How is this different from BI or analytics?","BI tells you what happened and leaves the decision to you. Datacern is built around the decision itself: it reads the case, drafts the call with cited evidence, records who decided and why, and learns from every correction — end to end, under governance. Dashboards are one capability inside it, not the point."],
 ["How is it different from just using an LLM or an ML model?","An LLM or model gives you an output; you still have to ground it, govern it, route the work, capture the audit trail and close the loop. Datacern is that surrounding system — grounding on your governed data, four-eyes approval, immutable audit, and a correction-to-retrain loop — with the models plugged in where they help."],
@@ -923,6 +1264,29 @@ $("#acc").addEventListener("click",e=>{
   $("#acc").querySelectorAll(".a").forEach(x=>x.classList.remove("open"));
   if(!open){b.setAttribute("aria-expanded","true");b.nextElementSibling.classList.add("open")}
 });
+
+/* value calculator — every input is the visitor's own. Deliberately ships no
+   default "savings %" of ours: the minutes-saved field is theirs to argue for,
+   because we have no customer data that would make a benchmark honest. */
+(function(){
+  const ids=["c-vol","c-min","c-cost","c-save"].map(i=>document.getElementById(i));
+  if(ids.some(el=>!el))return;
+  const [vol,min,cost,save]=ids;
+  const fmtH=new Intl.NumberFormat(undefined,{maximumFractionDigits:0});
+  const fmtM=new Intl.NumberFormat(undefined,{style:"currency",currency:"USD",maximumFractionDigits:0});
+  const num=el=>{const n=parseFloat(el.value);return Number.isFinite(n)&&n>0?n:0};
+  function calc(){
+    const perCase=Math.min(num(save),num(min));      // can't save more than it takes
+    const hours=num(vol)*perCase/60;
+    document.getElementById("m-hours").textContent=hours?fmtH.format(hours):"—";
+    document.getElementById("m-money").textContent=hours?fmtM.format(hours*num(cost)):"—";
+    /* 160h ≈ one month of one full-time person; a capacity figure, not a
+       headcount-reduction claim — the pitch is clearing the queue, not layoffs. */
+    document.getElementById("m-fte").textContent=hours?(hours/160).toFixed(1):"—";
+  }
+  ids.forEach(el=>el.addEventListener("input",calc));
+  calc();
+})();
 
 /* scroll reveal — .reveal starts at opacity:0, so if the observer is unavailable
    we must show everything rather than leave the page blank. */
