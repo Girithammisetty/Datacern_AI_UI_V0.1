@@ -516,6 +516,7 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
   <div class="wrap">
     <div class="brand"><svg class="icon" style="width:2rem;height:2rem;color:var(--primary)"><use href="#i-logo"/></svg>Datacern AI</div>
     <nav>
+      <a href="#money">Your ROI</a>
       <a href="#industries">Industries</a>
       <a href="#capabilities">Platform</a>
       <a href="#difference">Why not BI</a>
@@ -537,7 +538,7 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
       <p class="sub">Point Datacern at the data behind your regulated back-office work — card disputes, health claims, financial-crime alerts, insurance losses, supplier invoices. Write one intake rule and matching rows become a worklist on their own. Your team works that queue with an agent drafting the recommendation and its evidence; nothing takes effect until a named person approves it, no one can approve their own work, and every action leaves a receipt an examiner can follow.</p>
       <div class="cta-row">
         <a class="btn btn-lg" href="#contact">Request a demo <svg class="icon" style="width:1rem;height:1rem"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-lg btn-ghost" href="#value">See the value model</a>
+        <a class="btn btn-lg btn-ghost" href="#money">See the ROI for your team</a>
       </div>
       <p class="lede" style="margin-top:1.5rem;font-size:.875rem">Intake is configured once, then runs itself. Every determination still needs a named approver.</p>
     </div>
@@ -581,6 +582,192 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
   </div>
 </section>
 
+<!-- ============ TOP 5 ROI WORKFLOWS ============
+     Compact customer-ROI section. Rule #1: every workflow named is a real
+     entry in the solutions catalogue rendered further down this page — no
+     invented use cases, no benchmark percentages or dollar claims. One
+     mechanism sentence per workflow; the visitor sizes it in #value. -->
+<style>
+.m5{display:grid;gap:1rem;margin-top:2.25rem}
+@media(min-width:900px){.m5{grid-template-columns:1fr 1fr}.m5>.feat{grid-column:1/-1}}
+.mcard{position:relative;padding:0;overflow:hidden;height:100%;display:flex;flex-direction:column}
+.mcard .top{height:4px;background:linear-gradient(90deg,var(--primary),var(--emerald))}
+.mcard.money .top{background:linear-gradient(90deg,var(--ok),#3fb389)}
+.mcard .in{padding:1.5rem;display:grid;gap:1.25rem;flex:1}
+@media(min-width:860px){.feat .in{grid-template-columns:1.15fr .85fr;align-items:center;padding:1.75rem}}
+.mcard .rank{position:absolute;top:.4rem;right:1rem;font-size:3.5rem;font-weight:800;
+  letter-spacing:-.05em;line-height:1;color:rgb(74 86 210 / .08);user-select:none;pointer-events:none}
+.mcard h3{font-size:1.0625rem;font-weight:700;letter-spacing:-.02em;margin-top:.625rem}
+.feat h3{font-size:1.25rem}
+.mcard .lane-chip{display:inline-flex;align-items:center;gap:.375rem;font-size:.6875rem;
+  font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--primary);
+  background:rgb(74 86 210 / .08);border:1px solid rgb(74 86 210 / .2);
+  border-radius:999px;padding:.1875rem .625rem}
+.mcard p.bd{margin-top:.625rem;font-size:.875rem;line-height:1.65;color:var(--muted)}
+.mcard .cash{margin-top:.875rem;display:flex;gap:.625rem;align-items:flex-start;
+  padding:.75rem .875rem;border-radius:.75rem;background:var(--ok-soft);
+  border:1px solid var(--ok-line);font-size:.8125rem;line-height:1.55;color:var(--fg)}
+.mcard .cash .icon{width:1rem;height:1rem;color:var(--ok);margin-top:.125rem}
+.mcard .cash b{color:var(--ok)}
+.mcard .go{margin-top:auto;padding-top:.875rem;display:inline-flex;align-items:center;gap:.375rem;
+  font-size:.8125rem;font-weight:600;color:var(--primary)}
+.mcard .go:hover{text-decoration:underline}
+.mart{width:100%;max-width:22rem;margin-inline:auto}
+.mart-sm{width:100%;max-width:17rem;margin:1rem auto .25rem}
+</style>
+<section id="money" class="sec wrap" style="scroll-margin-top:5rem">
+  <div class="reveal">
+    <span class="eyebrow"><svg class="icon" style="width:.875rem;height:.875rem"><use href="#d-queue"/></svg>The ROI for your business</span>
+    <p class="lede" style="margin-top:1rem">For an SMB with one overloaded queue or an enterprise running dozens, the return lands in your own P&amp;L: revenue you recover, payments you stop, disputes you win, cash you keep, business you write. We name the mechanism — <a href="#value" style="color:var(--primary);font-weight:600">you size it with your own volumes</a>.</p>
+  </div>
+
+  <div class="m5">
+
+    <!-- #1 Provider Revenue Cycle (feature) -->
+    <div class="reveal feat"><div class="glass mcard money">
+      <div class="top"></div><span class="rank">1</span>
+      <div class="in">
+        <div style="display:flex;flex-direction:column">
+          <span class="lane-chip" style="align-self:flex-start"><svg class="icon" style="width:.8125rem;height:.8125rem"><use href="#i-heart"/></svg>Healthcare · Provider</span>
+          <h3>Provider Revenue Cycle — recover revenue you already earned</h3>
+          <p class="bd">The agent reads each denial, works it to root cause against coding and coverage rules, and drafts the appeal with the evidence attached. Your specialist reviews and signs.</p>
+          <div class="cash"><svg class="icon"><use href="#d-queue"/></svg><span><b>Your return:</b> denied claims overturned and paid — revenue that would otherwise be written off.</span></div>
+          <a class="go" href="#ind-healthcare">See the Healthcare pack <svg class="icon" style="width:.875rem;height:.875rem"><use href="#i-arrow"/></svg></a>
+        </div>
+        <svg class="mart" viewBox="0 0 240 160" role="img" aria-label="A denied claim turned into recovered revenue">
+          <defs>
+            <radialGradient id="m1g" cx="50%" cy="40%" r="65%">
+              <stop offset="0%" stop-color="rgb(14 124 90 / .14)"/><stop offset="100%" stop-color="rgb(14 124 90 / 0)"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="120" cy="82" rx="112" ry="66" fill="url(#m1g)"/>
+          <g stroke="var(--primary)" stroke-width="1.75" fill="#fff" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="34" y="44" width="58" height="74" rx="6"/>
+            <path d="M44 60h38M44 70h38M44 80h26" fill="none"/>
+          </g>
+          <g><circle cx="88" cy="50" r="11" fill="var(--stop-soft)" stroke="var(--stop)" stroke-width="1.75"/>
+            <path d="M84 46l8 8M92 46l-8 8" stroke="var(--stop)" stroke-width="1.75" stroke-linecap="round"/></g>
+          <path d="M104 96 C 128 96, 132 70, 156 70" fill="none" stroke="var(--ok)" stroke-width="2.25"
+            stroke-linecap="round" stroke-dasharray="1 6"/>
+          <path d="M150 64l8 6-8 6" fill="none" stroke="var(--ok)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+          <g stroke="var(--ok)" stroke-width="1.75" fill="var(--ok-soft)" stroke-linejoin="round">
+            <ellipse cx="188" cy="106" rx="24" ry="8"/>
+            <path d="M164 106v-12c0 -4.4 10.7 -8 24 -8s24 3.6 24 8v12" fill="var(--ok-soft)"/>
+            <ellipse cx="188" cy="94" rx="24" ry="8"/>
+            <ellipse cx="188" cy="82" rx="24" ry="8" fill="#fff"/>
+          </g>
+          <g><circle cx="212" cy="62" r="12" fill="var(--ok)" stroke="none"/>
+            <path d="M206 62l4 4 8-8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <text x="63" y="136" font-size="9" fill="var(--muted)" text-anchor="middle" font-family="inherit">Denied claim</text>
+          <text x="188" y="136" font-size="9" fill="var(--muted)" text-anchor="middle" font-family="inherit">Recovered &amp; paid</text>
+        </svg>
+      </div>
+    </div></div>
+
+    <!-- #2 Payment Integrity -->
+    <div class="reveal"><div class="glass mcard">
+      <div class="top"></div><span class="rank">2</span>
+      <div class="in"><div style="display:flex;flex-direction:column;flex:1">
+        <span class="lane-chip" style="align-self:flex-start"><svg class="icon" style="width:.8125rem;height:.8125rem"><use href="#i-heart"/></svg>Healthcare · Payer</span>
+        <h3>Payment Integrity — stop paying claims you shouldn't</h3>
+        <svg class="mart-sm" viewBox="0 0 240 120" role="img" aria-label="A shield valve stopping a suspect payment in an outgoing flow">
+          <g stroke="var(--primary)" stroke-width="1.75" fill="none" stroke-linecap="round"><path d="M18 60h58M164 60h58"/></g>
+          <g fill="var(--primary)"><circle cx="34" cy="60" r="4"/><circle cx="52" cy="60" r="4"/><circle cx="70" cy="60" r="4" fill="var(--stop)"/></g>
+          <path d="M120 22c14 8 24 8 32 8v34c0 22-18 32-32 38-14-6-32-16-32-38V30c8 0 18 0 32-8z" fill="#fff" stroke="var(--primary)" stroke-width="1.9" stroke-linejoin="round"/>
+          <g><circle cx="120" cy="58" r="14" fill="var(--stop-soft)" stroke="var(--stop)" stroke-width="1.75"/>
+            <path d="M113 51l14 14" stroke="var(--stop)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="120" cy="58" r="14" fill="none" stroke="var(--stop)" stroke-width="1.75"/></g>
+          <g fill="var(--ok)"><circle cx="186" cy="60" r="4"/><circle cx="204" cy="60" r="4"/></g>
+          <text x="46" y="88" font-size="9" fill="var(--muted)" text-anchor="middle" font-family="inherit">Claims out</text>
+          <text x="196" y="88" font-size="9" fill="var(--muted)" text-anchor="middle" font-family="inherit">Clean pays only</text>
+        </svg>
+        <div class="cash"><svg class="icon"><use href="#d-queue"/></svg><span><b>Your return:</b> improper payments held before they leave your accounts, with each case built to a defensible referral.</span></div>
+        <a class="go" href="#ind-healthcare">See Payment Integrity <svg class="icon" style="width:.875rem;height:.875rem"><use href="#i-arrow"/></svg></a>
+      </div></div>
+    </div></div>
+
+    <!-- #3 Chargeback Representment -->
+    <div class="reveal"><div class="glass mcard">
+      <div class="top"></div><span class="rank">3</span>
+      <div class="in"><div style="display:flex;flex-direction:column;flex:1">
+        <span class="lane-chip" style="align-self:flex-start"><svg class="icon" style="width:.8125rem;height:.8125rem"><use href="#i-bank"/></svg>Banking · Disputes</span>
+        <h3>Chargeback Representment — win the disputes worth winning</h3>
+        <svg class="mart-sm" viewBox="0 0 240 120" role="img" aria-label="A payment card with an evidence package and a reversal arrow returning funds">
+          <g stroke="var(--primary)" stroke-width="1.75" fill="#fff" stroke-linejoin="round">
+            <rect x="26" y="34" width="80" height="52" rx="8"/><path d="M26 50h80" stroke-linecap="round"/>
+            <rect x="36" y="62" width="22" height="8" rx="2" fill="rgb(74 86 210 / .15)" stroke="none"/></g>
+          <g stroke="var(--primary)" stroke-width="1.6" fill="#fff" stroke-linejoin="round">
+            <rect x="128" y="30" width="46" height="60" rx="5" transform="rotate(-4 151 60)"/>
+            <path d="M138 46h26M138 56h26M138 66h18" stroke-linecap="round" fill="none" transform="rotate(-4 151 60)"/></g>
+          <g><circle cx="176" cy="34" r="10" fill="var(--ok)"/><path d="M171 34l3.5 3.5L182 30" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <path d="M212 84 C 212 56, 196 44, 186 42" fill="none" stroke="var(--ok)" stroke-width="2.25" stroke-linecap="round" stroke-dasharray="1 6"/>
+          <path d="M206 78l6 8 8-5" fill="none" stroke="var(--ok)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="66" y="104" font-size="9" fill="var(--muted)" text-anchor="middle" font-family="inherit">Disputed charge</text>
+          <text x="168" y="110" font-size="9" fill="var(--muted)" text-anchor="middle" font-family="inherit">Evidence filed · funds return</text>
+        </svg>
+        <div class="cash"><svg class="icon"><use href="#d-queue"/></svg><span><b>Your return:</b> chargebacks reversed in your favour because the evidence package was complete, filed and on time.</span></div>
+        <a class="go" href="#ind-banking">See the Banking pack <svg class="icon" style="width:.875rem;height:.875rem"><use href="#i-arrow"/></svg></a>
+      </div></div>
+    </div></div>
+
+    <!-- #4 AP Invoice Audit -->
+    <div class="reveal"><div class="glass mcard">
+      <div class="top"></div><span class="rank">4</span>
+      <div class="in"><div style="display:flex;flex-direction:column;flex:1">
+        <span class="lane-chip" style="align-self:flex-start"><svg class="icon" style="width:.8125rem;height:.8125rem"><use href="#i-scale"/></svg>Finance Ops</span>
+        <h3>AP Invoice Audit — catch duplicates before they pay</h3>
+        <svg class="mart-sm" viewBox="0 0 240 120" role="img" aria-label="Two identical invoices found by a magnifier, one flagged and held before payment">
+          <g stroke="var(--primary)" stroke-width="1.6" fill="#fff" stroke-linejoin="round">
+            <rect x="46" y="24" width="52" height="68" rx="5"/><path d="M56 40h32M56 50h32M56 60h22" stroke-linecap="round" fill="none"/></g>
+          <g stroke="var(--primary)" stroke-width="1.6" fill="#fff" stroke-linejoin="round">
+            <rect x="66" y="34" width="52" height="68" rx="5"/><path d="M76 50h32M76 60h32M76 70h22" stroke-linecap="round" fill="none"/></g>
+          <g stroke="var(--stop)" stroke-width="2" fill="rgb(176 69 42 / .06)">
+            <circle cx="132" cy="66" r="22"/><path d="M148 82l16 16" stroke-linecap="round"/></g>
+          <text x="132" y="71" font-size="12" font-weight="700" fill="var(--stop)" text-anchor="middle" font-family="inherit">×2</text>
+          <g stroke="var(--wait)" stroke-width="1.75" fill="var(--wait-soft)" stroke-linejoin="round"><rect x="184" y="42" width="38" height="26" rx="5"/></g>
+          <text x="203" y="59" font-size="9" font-weight="700" fill="var(--wait)" text-anchor="middle" font-family="inherit">HELD</text>
+          <text x="82" y="112" font-size="9" fill="var(--muted)" text-anchor="middle" font-family="inherit">Duplicate found</text>
+          <text x="203" y="84" font-size="9" fill="var(--muted)" text-anchor="middle" font-family="inherit">Before it pays</text>
+        </svg>
+        <div class="cash"><svg class="icon"><use href="#d-queue"/></svg><span><b>Your return:</b> cash that never leaves — duplicate and over-billed invoices held before payment, not chased after it.</span></div>
+        <a class="go" href="#ind-risk-ops">See Finance Ops <svg class="icon" style="width:.875rem;height:.875rem"><use href="#i-arrow"/></svg></a>
+      </div></div>
+    </div></div>
+
+    <!-- #5 Underwriting Intake -->
+    <div class="reveal"><div class="glass mcard">
+      <div class="top"></div><span class="rank">5</span>
+      <div class="in"><div style="display:flex;flex-direction:column;flex:1">
+        <span class="lane-chip" style="align-self:flex-start"><svg class="icon" style="width:.8125rem;height:.8125rem"><use href="#i-umb"/></svg>Insurance · Commercial</span>
+        <h3>Underwriting Intake &amp; Triage — quote faster, write more</h3>
+        <svg class="mart-sm" viewBox="0 0 240 130" role="img" aria-label="Messy submissions flowing through a funnel into a ranked, appetite-checked list">
+          <g stroke="var(--primary)" stroke-width="1.5" fill="#fff" stroke-linejoin="round">
+            <rect x="20" y="18" width="30" height="40" rx="4" transform="rotate(-10 35 38)"/>
+            <rect x="36" y="42" width="30" height="40" rx="4" transform="rotate(7 51 62)"/>
+            <rect x="22" y="72" width="30" height="40" rx="4" transform="rotate(-5 37 92)"/></g>
+          <g stroke="var(--primary)" stroke-width="1.9" fill="rgb(74 86 210 / .06)" stroke-linejoin="round">
+            <path d="M86 32h44l-15 30v26l-14 9V62z"/></g>
+          <g stroke="var(--border)" stroke-width="1.5" fill="#fff">
+            <rect x="146" y="22" width="72" height="20" rx="5"/>
+            <rect x="146" y="50" width="72" height="20" rx="5"/>
+            <rect x="146" y="78" width="72" height="20" rx="5"/></g>
+          <g><circle cx="158" cy="32" r="6" fill="var(--ok)"/><path d="M155 32l2 2 4-4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g><circle cx="158" cy="60" r="6" fill="var(--ok)"/><path d="M155 60l2 2 4-4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g><circle cx="158" cy="88" r="6" fill="var(--wait)"/><path d="M158 85v3.5M158 91.2v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></g>
+          <rect x="170" y="29" width="38" height="6" rx="3" fill="rgb(74 86 210 / .35)"/>
+          <rect x="170" y="57" width="30" height="6" rx="3" fill="rgb(74 86 210 / .25)"/>
+          <rect x="170" y="85" width="20" height="6" rx="3" fill="rgb(74 86 210 / .18)"/>
+          <text x="40" y="124" font-size="9" fill="var(--muted)" text-anchor="middle" font-family="inherit">Messy submissions</text>
+          <text x="182" y="114" font-size="9" fill="var(--muted)" text-anchor="middle" font-family="inherit">Ranked · appetite-checked</text>
+        </svg>
+        <div class="cash"><svg class="icon"><use href="#d-queue"/></svg><span><b>Your return:</b> premium written — in-appetite submissions quoted while they're still live instead of dying in an intake pile.</span></div>
+        <a class="go" href="#ind-insurance">See the Insurance pack <svg class="icon" style="width:.875rem;height:.875rem"><use href="#i-arrow"/></svg></a>
+      </div></div>
+    </div></div>
+
+  </div>
+</section>
+
 <!-- ============ INDUSTRIES ============ -->
 <section id="industries" class="sec wrap">
   <div class="reveal">
@@ -591,16 +778,9 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
   <div class="subhead">Flagship solutions — pick your lane</div>
   <div class="cards" id="industry-cards"></div>
 
-  <div style="margin-top:3.5rem">
-    <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.25rem 1rem">
-      <h3 style="font-size:1.25rem;font-weight:700">…and any other decision that runs on data</h3>
-      <span style="font-size:.875rem;color:var(--muted)">Same platform · same governance</span>
-    </div>
-    <div class="map" id="industry-map"></div>
-    <p class="lede" style="margin-top:1.75rem;font-size:.875rem">
-      <b style="color:var(--fg)">Don't see yours?</b> Datacern isn't built around an industry — it's built around the decision. New verticals install as capability packs onto the same core, so any judgment-heavy queue is a fit.
-    </p>
-  </div>
+  <p class="lede reveal" style="margin-top:3rem;font-size:.875rem">
+    <b style="color:var(--fg)">Don't see yours?</b> Datacern isn't built around an industry — it's built around the decision. The same governed platform runs judgment-heavy queues in 20+ other sectors, from government benefits to logistics to trust &amp; safety; new verticals install as capability packs onto the same core.
+  </p>
 </section>
 
 <!-- ============ CAPABILITIES ============ -->
@@ -1049,7 +1229,6 @@ const INDUSTRIES=[
      rows:[["MRB-5521","Nonconformance · use-as-is review","md","DW"],["UTL-8842","Inspection · wildfire-risk span","hi","NB"],["BEN-2044","Benefits appeal · due-process clock","md","EK"]]}}
  ]}];
 
-const MORE=[["Healthcare & Life Sciences","Prior auth, claims, payment integrity"],["Banking & Capital Markets","AML alerts, disputes, credit decisions"],["Insurance","Claim triage, leakage, settlements"],["Government & Public Sector","Benefits, eligibility, case adjudication"],["Manufacturing & Industrial","Quality dispositions, MRB, warranty"],["Retail & Consumer Goods","Returns, chargebacks, seller vetting"],["Energy & Utilities","Inspections, outage triage, safety cases"],["Telecom & Media","Fraud, provisioning, content appeals"],["Transportation & Logistics","Freight claims, safety, exceptions"],["Pharma & Biotech","Pharmacovigilance, device complaints"],["Fintech & Payments","Onboarding/KYC, disputes, risk"],["Real Estate & Mortgage","Underwriting intake, loss mitigation"],["Legal & Compliance","Contract review, sanctions, filings"],["Education","Admissions, aid, integrity cases"],["Travel & Hospitality","Refunds, chargebacks, fraud"],["Automotive","Warranty, recalls, defect claims"],["Aerospace & Defense","Nonconformance, compliance, audits"],["Agriculture & Food","Inspections, quality, traceability"],["Construction & Engineering","Defect claims, safety, change orders"],["Technology & Trust/Safety","Abuse review, appeals, moderation"]];
 
 const CAPS=[
 {key:"agents",icon:"i-bot",eyebrow:"Agentic workforce",title:"A team of specialist AI agents",
@@ -1094,6 +1273,7 @@ const TRUST=[["Your data stays yours","Cleanly isolated for your organization �
 const FAQ=[
 ["What does Datacern actually do?","It turns the data behind your regulated back-office work — disputes, claims, alerts, invoices — into a governed worklist, and keeps a named person accountable for every outcome. You point it at the data and write one intake rule; from then on, matching rows become cases on their own. Your team works that queue with an agent reading the case, applying your rules and drafting the recommendation with its evidence. A person approves it, someone other than the requester signs anything sensitive, and the whole chain is recorded. The test: ask any vendor for the complete record of one decision — who proposed it, who approved it, what evidence they saw, what changed in the source system. Producing that record is what this platform is for."],
 ["What actually runs without a person?","Two things, once configured: the data load on its schedule, and the intake rule that turns matching rows into cases. What still needs a person: picking up the case, asking the agent to draft, and approving. We are deliberate about this — a fully unattended pipeline is exactly what a regulated buyer cannot accept, and claiming one would not survive your first architecture review. The honest version is a queue that fills itself accurately and a team that clears it faster, with a receipt on every call."],
+["Where do customers see ROI first?","In the five workflows with the most direct return to your own P&L, all shipping packs from the catalogue on this page: Provider Revenue Cycle (your denied claims overturned and paid), Payment Integrity / FWA (improper payments stopped before they leave your accounts), Chargeback Representment (disputes won that you were writing off), AP Invoice Audit (duplicate and over-billed invoices held before your cash goes out), and Underwriting Intake & Triage (in-appetite submissions quoted while they're still live). This holds whether you're an SMB with one queue or an enterprise with dozens — size the mechanism with your own volumes in the calculator, then test it in a draft-only pilot."],
 ["Which budget does this come out of?","Usually operations, not BI. The value that gets it funded is throughput — your team clears more of the queue before the deadline, with the reading and drafting already done. The governance is what gets it approved rather than what gets it paid for: it removes the objection that blocks AI in a regulated process. If you're being asked to justify it as an analytics purchase, the framing has gone wrong."],
 ["We already have BI. Do we replace it?","No, and you shouldn't. BI tells you the queue is 4,000 deep and slipping. It won't work a single case, hold an approval, or tell an examiner who decided. Keep your dashboards; Datacern picks up where they stop."],
 ["What exactly is “agentic AI”?","A chatbot answers a question; a model returns a score. An agentic AI takes on multi-step work: it reads the evidence, checks it against your rules, uses tools to gather what it needs, and drafts a decision or action — then hands it to a person to approve. Datacern runs a team of these specialist agents (triage, analytics, governance and more), each scoped to what it's allowed to see and do. They propose; they never act on their own."],
@@ -1129,8 +1309,6 @@ $("#industry-cards").innerHTML=INDUSTRIES.map(d=>`
       ${solCount(d)} solutions · ${d.lanes.length} area${d.lanes.length>1?"s":""}</div>
   </a></div>`).join("");
 
-$("#industry-map").innerHTML=MORE.map(([n,e])=>`
-  <div class="reveal"><div class="glass"><div class="nm">${esc(n)}</div><div class="ex">${esc(e)}</div></div></div>`).join("");
 
 /* compare table */
 $("#compare").innerHTML=COMPARE.map(([d,bi,ai,di])=>`
