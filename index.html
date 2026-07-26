@@ -9,7 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6ef5' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M12 2v20M2 12h20M12 12 5 5M12 12l7-7M12 12l7 7M12 12l-7 7'/%3E%3Ccircle cx='12' cy='12' r='2.6'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Datacern AI — AI does the work, a named human signs it">
-<meta property="og:description" content="Datacern works your regulated back-office queues — disputes, claims, alerts, invoices. Agents read the file and draft the recommendation; nothing takes effect until a named person approves it, no one can approve their own work, and every action leaves a receipt an examiner can follow.">
+<meta property="og:description" content="Point Datacern at the data behind your regulated back-office work — disputes, claims, alerts, invoices. One intake rule turns matching rows into a worklist on their own. Your team works it with an agent drafting the recommendation; nothing takes effect until a named person approves it, no one can approve their own work, and every action leaves a receipt an examiner can follow.">
 <meta name="twitter:card" content="summary_large_image">
 <style>*{margin:0}html{-webkit-text-size-adjust:100%}img,svg{display:block;max-width:100%}</style>
 </head>
@@ -534,12 +534,12 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
     <div>
       <span class="eyebrow"><svg class="icon" style="width:.875rem;height:.875rem"><use href="#i-spark"/></svg>Governed AI for regulated operations</span>
       <h1>AI does the work.<br>A named human <span class="grad">signs it.</span></h1>
-      <p class="sub">Datacern works your regulated back-office queues — card disputes, health claims, financial-crime alerts, insurance losses, supplier invoices. Agents read the file, apply your rules and draft the recommendation. Nothing takes effect until a named person approves it, no one can approve their own work, and every action leaves a receipt an examiner can follow.</p>
+      <p class="sub">Point Datacern at the data behind your regulated back-office work — card disputes, health claims, financial-crime alerts, insurance losses, supplier invoices. Write one intake rule and matching rows become a worklist on their own. Your team works that queue with an agent drafting the recommendation and its evidence; nothing takes effect until a named person approves it, no one can approve their own work, and every action leaves a receipt an examiner can follow.</p>
       <div class="cta-row">
         <a class="btn btn-lg" href="#contact">Request a demo <svg class="icon" style="width:1rem;height:1rem"><use href="#i-arrow"/></svg></a>
         <a class="btn btn-lg btn-ghost" href="#value">See the value model</a>
       </div>
-      <p class="lede" style="margin-top:1.5rem;font-size:.875rem">Your team clears more of the queue. Compliance still gets a named approver on every action.</p>
+      <p class="lede" style="margin-top:1.5rem;font-size:.875rem">Intake is configured once, then runs itself. Every determination still needs a named approver.</p>
     </div>
 
     <div class="mock">
@@ -888,9 +888,9 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
       <p>One workflow with a real clock on it. You supply the datasets the workflow needs; we stand up an isolated tenant for your organisation.</p>
       <div class="own">Yours: a data extract · Ours: the environment</div></div></div>
     <div class="reveal"><div class="glass wkc"><span class="wn">Week 2</span>
-      <h3>Install the workflow, tune the rules</h3>
-      <p>The pack brings the outcome codes, the triage table and the dashboards for that workflow. Your supervisor reads every rule in plain language and changes the thresholds to yours — they are your policy, not our defaults.</p>
-      <div class="own">Yours: the thresholds · Ours: the starting content</div></div></div>
+      <h3>Install the workflow, write the intake rule</h3>
+      <p>The pack brings the outcome codes, the triage table and the dashboards. Your supervisor tunes the thresholds to yours, then writes one intake rule — which rows become work, at what severity, on what clock. Written once; from then on matching rows become cases without anyone watching.</p>
+      <div class="own">Yours: thresholds + the intake rule · Ours: the starting content</div></div></div>
     <div class="reveal"><div class="glass wkc"><span class="wn">Week 3</span>
       <h3>Run it in draft-only</h3>
       <p>Agents draft on live work; nobody acts on the output. Compare the drafted recommendation against what your specialists actually did. That agreement rate is the number you take to your sponsor.</p>
@@ -909,6 +909,7 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
       <div class="n"><h4>Your rules and thresholds</h4><p>The cut-offs your supervisors already apply, even if they currently live in a spreadsheet or someone's head. Writing them down is usually the most valuable week of the pilot regardless of what you buy.</p></div>
       <div class="n"><h4>Two named people</h4><p>One to work the queue, one to approve. Four-eyes needs two humans by definition — the platform will not let a single person do both, and no configuration setting turns that off.</p></div>
     </div>
+    <p class="lede" style="margin-top:1.25rem;font-size:.8125rem">Worth being precise about what runs unattended and what does not. <b style="color:var(--fg)">Unattended once configured:</b> the load on its schedule, and the intake rule turning matching rows into cases. <b style="color:var(--fg)">Still a person:</b> picking up the case, asking the agent to draft, and approving. We are not selling you a queue that empties itself overnight — we are selling you a queue that fills itself accurately and a team that clears it faster, with a receipt on every call.</p>
     <div class="refuse">
       <h4><svg class="icon" style="width:1.0625rem;height:1.0625rem;display:inline-block;vertical-align:-3px;margin-right:.375rem"><use href="#d-refuse"/></svg>And one thing we do on purpose: the install refuses</h4>
       <p>If the data you supply is missing a field the workflow depends on, the install <b>stops and names every missing column</b> — it does not proceed with a half-configured workflow that silently produces wrong recommendations. You'll see <code>requires_binding</code> and an exact list. Most vendors would call that a bad first impression. We'd rather fail in your test environment than in front of your examiner.</p>
@@ -1091,7 +1092,8 @@ const STEPS=[["AI does the reading","Agents gather the evidence, check it agains
 const TRUST=[["Your data stays yours","Cleanly isolated for your organization — never mingled, never shared."],["Least-privilege access","Everyone sees and does exactly what their role allows, and nothing more."],["A second set of eyes","The changes that matter most require another reviewer to sign off before they go live."],["A tamper-evident trail","Who decided what, when, and on what evidence — captured for every action, ready for any review."]];
 
 const FAQ=[
-["What does Datacern actually do?","It works your regulated back-office queues — disputes, claims, alerts, invoices — and keeps a named person accountable for every outcome. Agents read the case, apply your rules and draft the recommendation with its evidence. A person approves it, someone other than the requester signs anything sensitive, and the whole chain is recorded. The test: ask any vendor for the complete record of one decision — who proposed it, who approved it, what evidence they saw, what changed in the source system. Producing that record is what this platform is for."],
+["What does Datacern actually do?","It turns the data behind your regulated back-office work — disputes, claims, alerts, invoices — into a governed worklist, and keeps a named person accountable for every outcome. You point it at the data and write one intake rule; from then on, matching rows become cases on their own. Your team works that queue with an agent reading the case, applying your rules and drafting the recommendation with its evidence. A person approves it, someone other than the requester signs anything sensitive, and the whole chain is recorded. The test: ask any vendor for the complete record of one decision — who proposed it, who approved it, what evidence they saw, what changed in the source system. Producing that record is what this platform is for."],
+["What actually runs without a person?","Two things, once configured: the data load on its schedule, and the intake rule that turns matching rows into cases. What still needs a person: picking up the case, asking the agent to draft, and approving. We are deliberate about this — a fully unattended pipeline is exactly what a regulated buyer cannot accept, and claiming one would not survive your first architecture review. The honest version is a queue that fills itself accurately and a team that clears it faster, with a receipt on every call."],
 ["Which budget does this come out of?","Usually operations, not BI. The value that gets it funded is throughput — your team clears more of the queue before the deadline, with the reading and drafting already done. The governance is what gets it approved rather than what gets it paid for: it removes the objection that blocks AI in a regulated process. If you're being asked to justify it as an analytics purchase, the framing has gone wrong."],
 ["We already have BI. Do we replace it?","No, and you shouldn't. BI tells you the queue is 4,000 deep and slipping. It won't work a single case, hold an approval, or tell an examiner who decided. Keep your dashboards; Datacern picks up where they stop."],
 ["What exactly is “agentic AI”?","A chatbot answers a question; a model returns a score. An agentic AI takes on multi-step work: it reads the evidence, checks it against your rules, uses tools to gather what it needs, and drafts a decision or action — then hands it to a person to approve. Datacern runs a team of these specialist agents (triage, analytics, governance and more), each scoped to what it's allowed to see and do. They propose; they never act on their own."],
