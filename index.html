@@ -288,6 +288,69 @@ td.di .hd{display:flex;gap:.5rem}
 td.di .icon{width:1rem;height:1rem;color:var(--primary);margin-top:.2rem}
 tr:last-child td.di{border-radius:0 0 .75rem .75rem}
 
+/* ---------- decision loop (the one diagram) ----------
+   Drawn as a LOOP, not a pipeline: a pipeline is a tool you buy once, a loop is
+   an asset that appreciates, and the return arc is the whole thesis — so it is
+   labelled rather than decorative. Step 3 is the only elevated card because the
+   category claim is that AI proposes and a person disposes, so the eye has to
+   land on the person. AI steps carry the lavender accent; human and
+   system-of-record steps stay indigo, so "who did what" reads before the words. */
+.loop{margin-top:2.5rem}
+.loop-row{display:grid;gap:1rem;list-style:none;padding:0;margin:0}
+@media(min-width:900px){.loop-row{grid-template-columns:repeat(4,1fr);gap:1.125rem}}
+.lp{position:relative;height:100%}
+.lp .box{height:100%;display:flex;flex-direction:column;border-radius:1rem;padding:1.25rem;
+  background:#fff;border:1px solid rgb(74 86 210 / .14);
+  box-shadow:0 1px 2px rgb(27 30 51 / .04),0 14px 34px -22px rgb(74 86 210 / .28)}
+.lp.gate .box{background:rgb(74 86 210 / .045);border:2px solid rgb(74 86 210 / .32);
+  box-shadow:0 2px 4px rgb(27 30 51 / .05),0 22px 50px -24px rgb(74 86 210 / .45)}
+@media(min-width:900px){.lp.gate .box{margin-top:-.5rem;padding-top:1.625rem;padding-bottom:1.625rem}}
+.lp .top{display:flex;align-items:center;gap:.5rem}
+.lp .ic{display:inline-flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;
+  border-radius:.75rem;flex:none;background:rgb(74 86 210 / .1);color:var(--primary);
+  box-shadow:inset 0 0 0 1px rgb(74 86 210 / .2)}
+.lp .ic .icon{width:1.125rem;height:1.125rem}
+.lp.ai .ic{background:rgb(167 139 250 / .16);color:#6d4fd0;box-shadow:inset 0 0 0 1px rgb(167 139 250 / .34)}
+.lp.gate .ic{background:var(--primary);color:#fff;box-shadow:inset 0 0 0 1px rgb(74 86 210 / .4)}
+.lp .kick{font-size:.6875rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.lp h3{margin:.875rem 0 0;font-size:1rem;font-weight:650;line-height:1.35}
+.lp p{margin-top:.375rem;font-size:.875rem;line-height:1.6;color:var(--muted)}
+.lp .never{margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgb(74 86 210 / .18);
+  font-size:.8125rem;font-weight:600;color:var(--primary)}
+@media(min-width:900px){
+  .lp:not(:last-child)::after{content:"";position:absolute;top:50%;right:-1.0625rem;width:1.0625rem;
+    height:1px;background:rgb(74 86 210 / .26)}
+  .lp:not(:last-child)::before{content:"";position:absolute;top:50%;right:-.1875rem;width:.4375rem;
+    height:.4375rem;transform:translateY(-50%) rotate(45deg);
+    border-top:1px solid rgb(74 86 210 / .45);border-right:1px solid rgb(74 86 210 / .45)}
+}
+/* the return arc — three-sided track so it stays crisp at any width, with an
+   arrowhead pointing back UP into step 1. Without the head it reads as a box.
+   ORDER MATTERS: every base rule is declared BEFORE the media query. Media
+   queries add no specificity, so a base rule written afterwards wins and
+   silently cancels the desktop layout (that bug shipped once: it zeroed the
+   arrowhead and left the chip floating below the track). */
+.loop-back{position:relative;margin-top:.75rem}
+.loop-track{display:none}
+.loop-head{display:none}
+.loop-chip-wrap{display:flex;justify-content:center;margin-top:1rem}
+@media(min-width:900px){
+  .loop-track{display:block;margin:0 1.5rem;height:2.25rem;border:1px dashed rgb(74 86 210 / .32);
+    border-top:0;border-radius:0 0 1rem 1rem}
+  .loop-head{display:block;position:absolute;left:1.5rem;top:0;width:.5rem;height:.5rem;
+    transform:translate(-50%,-50%) rotate(45deg);
+    border-left:2px solid rgb(74 86 210 / .5);border-top:2px solid rgb(74 86 210 / .5)}
+  .loop-chip-wrap{margin-top:-1.0625rem}
+}
+.loop-chip{display:inline-flex;align-items:center;gap:.5rem;border-radius:999px;
+  border:1px solid rgb(74 86 210 / .26);background:#fff;padding:.4375rem 1rem;
+  font-size:.8125rem;font-weight:550;color:var(--fg);box-shadow:0 1px 2px rgb(27 30 51 / .05)}
+.loop-chip .icon{width:1rem;height:1rem;color:#6d4fd0;flex:none}
+.loop-audit{margin-top:1.75rem;display:flex;align-items:flex-start;justify-content:center;gap:.5rem;
+  text-align:center;font-size:.875rem;color:var(--muted)}
+.loop-audit .icon{width:1rem;height:1rem;flex:none;color:rgb(74 86 210 / .7);margin-top:.15rem}
+.loop-audit b{font-weight:600;color:var(--fg)}
+
 /* ---------- steps ---------- */
 .steps{display:grid;gap:1.5rem;margin-top:2.5rem}
 @media(min-width:820px){.steps{grid-template-columns:repeat(3,1fr)}}
@@ -441,7 +504,7 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
   <symbol id="i-umb" viewBox="0 0 24 24"><path d="M12 3v1.5M2.5 12a9.5 9.5 0 0 1 19 0z"/><path d="M12 12v6.5a2.2 2.2 0 0 1-4.4 0"/></symbol>
   <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3.5V21M7 21h10M4 8.5h16M4 8.5 1.5 15h5zM20 8.5 17.5 15h5z"/><path d="M1.5 15a2.5 2.5 0 0 0 5 0M17.5 15a2.5 2.5 0 0 0 5 0"/></symbol>
   <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><rect x="3" y="4.5" width="3" height="3" rx=".6"/><rect x="3" y="10.5" width="3" height="3" rx=".6"/><rect x="3" y="16.5" width="3" height="3" rx=".6"/></symbol>
-  <symbol id="i-trail" viewBox="0 0 24 24"><circle cx="5" cy="6" r="1.7"/><circle cx="5" cy="12" r="1.7"/><circle cx="5" cy="18" r="1.7"/><path d="M9 6h11M9 12h11M9 18h11"/></symbol>
+  <symbol id="i-loop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-9 9 9 9 0 0 1-7.6-4.2"/><path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 1 7.6 4.2"/><polyline points="3 3 3 8 8 8"/><polyline points="21 21 21 16 16 16"/></symbol><symbol id="i-trail" viewBox="0 0 24 24"><circle cx="5" cy="6" r="1.7"/><circle cx="5" cy="12" r="1.7"/><circle cx="5" cy="18" r="1.7"/><path d="M9 6h11M9 12h11M9 18h11"/></symbol>
   <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17.5" cy="8.5" r="2.4"/><path d="M15.5 12.2a4.6 4.6 0 0 1 5.2 4.4"/></symbol>
   <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="3.4"/><path d="M12 1.8v3.2M12 19v3.2M1.8 12h3.2M19 12h3.2"/></symbol>
 
@@ -943,9 +1006,23 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
   <div class="wrap sec">
     <div class="reveal">
       <h2 style="margin-top:0">How every decision flows</h2>
-      <p class="lede" style="margin-top:.75rem">Three steps, every time — so the work moves quickly and the accountability never leaves your people.</p>
+      <p class="lede" style="margin-top:.75rem">A loop, not a pipeline — the work moves quickly, the accountability never leaves your people, and every decision makes the next one better.</p>
     </div>
-    <div class="steps" id="steps"></div>
+    <figure class="loop reveal" style="margin:0">
+      <ol class="loop-row" id="loopRow"></ol>
+      <div class="loop-back">
+        <div class="loop-track" aria-hidden="true"></div>
+        <span class="loop-head" aria-hidden="true"></span>
+        <div class="loop-chip-wrap">
+          <span class="loop-chip"><svg class="icon"><use href="#i-loop"/></svg>
+            Every decision teaches the system — so quality climbs and the routine work automates itself</span>
+        </div>
+      </div>
+      <figcaption class="loop-audit">
+        <svg class="icon"><use href="#i-trail"/></svg>
+        <span>Every step above is recorded — <b>who decided what, when, and on what evidence</b> — ready for an auditor, a regulator or a dispute.</span>
+      </figcaption>
+    </figure>
     <div class="outs">
       <span class="lbl">What changes for your team:</span>
       <span class="pill">Shorter backlogs</span><span class="pill">Consistent determinations</span>
@@ -1266,7 +1343,11 @@ const COMPARE=[
 ["Consistency","Depends on the analyst","Consistent scores","Consistent, policy-driven determinations"],
 ["Time to value","Build the dashboards","Build & train the models","Install a solution pack for the decision"]];
 
-const STEPS=[["AI does the reading","Agents gather the evidence, check it against your rules, and draft a clear recommendation with the reasoning laid out."],["Your expert decides","Approve, adjust or override. People stay accountable for every outcome — nothing acts on its own."],["It learns and improves","Each decision becomes training data. Quality climbs, the routine gets automated, and your team is freed for the hard calls."]];
+const STEPS=[
+["i-net","Your world","Your data, connected","Claims, policies, documents and systems of record — in place, under your existing controls.",""],
+["i-bot","AI","Agents do the reading","Specialist agents gather the evidence, check it against your rules, and draft a recommendation.","ai"],
+["i-users","Your people","Your expert decides","Approve, adjust or override. Nothing is written until a person with the authority says so.","gate"],
+["i-flow","Outcome","The action is taken","Written back to your systems with the evidence and the reasoning attached to it.",""]];
 
 const TRUST=[["Your data stays yours","Cleanly isolated for your organization — never mingled, never shared."],["Least-privilege access","Everyone sees and does exactly what their role allows, and nothing more."],["A second set of eyes","The changes that matter most require another reviewer to sign off before they go live."],["A tamper-evident trail","Who decided what, when, and on what evidence — captured for every action, ready for any review."]];
 
@@ -1316,9 +1397,13 @@ $("#compare").innerHTML=COMPARE.map(([d,bi,ai,di])=>`
   <td class="di"><span class="hd">${ic("i-check")}<span>${esc(di)}</span></span></td></tr>`).join("");
 
 /* steps */
-$("#steps").innerHTML=STEPS.map(([t,b],i)=>`
-  <div class="reveal"><div class="glass step"><div class="num">${i+1}</div>
-  <h3>${esc(t)}</h3><p>${esc(b)}</p></div></div>`).join("");
+$("#loopRow").innerHTML=STEPS.map(([ico,kick,t,b,tone],i)=>`
+  <li class="lp ${tone}"><div class="box">
+    <div class="top"><span class="ic"><svg class="icon"><use href="#${ico}"/></svg></span>
+      <span class="kick">${esc(kick)}</span></div>
+    <h3>${i+1}. ${esc(t)}</h3><p>${esc(b)}</p>
+    ${tone==="gate"?'<p class="never">The AI never writes on its own.</p>':""}
+  </div></li>`).join("");
 
 /* trust */
 $("#trust").innerHTML=TRUST.map(([t,b])=>`
