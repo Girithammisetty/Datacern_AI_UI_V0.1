@@ -46,8 +46,11 @@ whole story.
 - **H3 (flywheel):** Stream → Decide → Learn. Every decision makes the next
   one cheaper.
 - **Proof beat (always paired with any AI claim):** every step leaves a
-  receipt an examiner can follow; the platform's own CI refuses to merge a
-  change unless a live journey proves the loop end to end.
+  receipt an examiner can follow; every change runs live end-to-end journeys
+  in CI that assert the loop on real state, and merges wait for green.
+  (Say "CI refuses to merge" only once branch protection on `main` requires
+  the `e2e-live` check — enable it in repo Settings; until then it is
+  practice, not mechanism.)
 
 ## 4. Land → expand motion (implemented, not aspirational)
 
