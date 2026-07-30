@@ -583,6 +583,7 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
       <a href="#industries">Industries</a>
       <a href="#capabilities">Platform</a>
       <a href="#difference">Why not BI</a>
+      <a href="#streams">Live streams</a>
       <a href="#architecture">Architecture</a>
       <a href="#value">Value</a>
       <a href="#adopt">Get started</a>
@@ -1030,6 +1031,65 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;justify-conte
       <span class="pill">Confident audits</span><span class="pill">Lower cost per decision</span>
       <span class="pill">Experts on judgment, not busywork</span>
     </div>
+  </div>
+</section>
+
+<!-- ============ REALTIME CASE STREAMS + ML LOOP ============
+     The priced add-on, described exactly as built (services/ingestion-service
+     case-streams API, case-service triggers + evidence + workspace boundary,
+     pipeline-orchestrator/experiment/inference services). Every claim below is
+     asserted by a CI journey (make journey-streams) that runs on the real
+     stack before any change merges — the fine print is the honest part. -->
+<style>
+.st-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr));gap:1rem;margin-top:2rem}
+.st-step{position:relative;background:var(--card);border:1px solid var(--border);border-radius:1rem;padding:1.25rem 1.25rem 1.125rem}
+.st-step .n{display:inline-flex;align-items:center;justify-content:center;width:1.75rem;height:1.75rem;
+  border-radius:999px;background:var(--primary);color:var(--primary-fg);font-size:.8125rem;font-weight:700}
+.st-step h3{margin:.75rem 0 .375rem;font-size:1rem}
+.st-step p{font-size:.8125rem;color:var(--muted);line-height:1.65}
+.st-step .tag{position:absolute;top:1.125rem;right:1.125rem;font-size:.6875rem;font-weight:600;color:var(--muted)}
+.st-usecase{margin-top:1.5rem;display:flex;gap:1rem;align-items:flex-start;background:var(--card);
+  border:1px solid rgb(91 110 245 / .35);border-radius:1rem;padding:1.25rem}
+.st-usecase svg{flex:none;width:1.375rem;height:1.375rem;color:var(--primary)}
+.st-usecase p{font-size:.875rem;color:var(--muted);line-height:1.7;margin:0}
+.st-usecase b{color:var(--fg)}
+.st-fine{margin-top:1.5rem;font-size:.8125rem;color:var(--muted);line-height:1.8}
+.st-fine b{color:var(--fg)}
+.st-badge{display:inline-flex;align-items:center;gap:.375rem;border:1px solid rgb(91 110 245 / .4);
+  border-radius:999px;padding:.25rem .75rem;font-size:.75rem;font-weight:600;color:var(--primary)}
+</style>
+<section id="streams" class="sec wrap" style="scroll-margin-top:5rem">
+  <div class="reveal">
+    <span class="st-badge"><svg class="icon" style="width:.875rem;height:.875rem"><use href="#i-spark"/></svg>Priced add-on &middot; realtime case streams</span>
+    <h2 style="margin-top:1rem">From live data to a defensible case &mdash; and a model that gets sharper</h2>
+    <p class="lede" style="margin-top:.75rem">Point a stream at the system that already holds the work. New rows become cases on the right department&rsquo;s worklist with their evidence frozen at intake &mdash; and every decision your team makes feeds a governed ML loop that scores the next batch before anyone opens it.</p>
+  </div>
+  <div class="st-grid reveal">
+    <div class="st-step"><span class="n">1</span><span class="tag">connect</span>
+      <h3>Watch the source you already trust</h3>
+      <p>A stream binds to a real connection &mdash; Postgres, MySQL, SQL&nbsp;Server, warehouse &mdash; with the driver probe run at creation, not on the day it matters.</p></div>
+    <div class="st-step"><span class="n">2</span><span class="tag">stream</span>
+      <h3>Pull only what&rsquo;s new</h3>
+      <p>A watermark cursor pulls just the rows that changed since the last pass, on your interval. The source is never re-scanned; the cursor is visible on every stream tile.</p></div>
+    <div class="st-step"><span class="n">3</span><span class="tag">case + evidence</span>
+      <h3>Matching rows become cases</h3>
+      <p>Your intake rule filters rows server-side; the ones that pass open cases on <b>one department&rsquo;s</b> worklist &mdash; live &mdash; with the intake row frozen as evidence. Another department asking for that case doesn&rsquo;t get &ldquo;forbidden&rdquo;; it gets <i>not found</i>.</p></div>
+    <div class="st-step"><span class="n">4</span><span class="tag">decide</span>
+      <h3>The governed loop takes over</h3>
+      <p>An agent drafts the recommendation with its evidence; a named human signs; no one approves their own work; every step leaves a receipt. <a href="#how">Same loop as everything else.</a></p></div>
+    <div class="st-step"><span class="n">5</span><span class="tag">learn</span>
+      <h3>Decisions train models &mdash; governed</h3>
+      <p>Outcomes and history feed training pipelines with tracked experiments and versioned models. Promoting a model to production is itself a four-eyes decision, not a config push.</p></div>
+    <div class="st-step"><span class="n">6</span><span class="tag">score</span>
+      <h3>Every new batch arrives pre-scored</h3>
+      <p>A scoring schedule re-scores each increment the stream pulls; high-risk scores open their own cases. The queue your team sees tomorrow is already triaged by what they decided today.</p></div>
+  </div>
+  <div class="st-usecase reveal">
+    <svg class="icon"><use href="#i-bot"/></svg>
+    <p><b>Worked example &mdash; contact-center AI.</b> Your voice platform lands call interactions in its own store. A stream watches it; fraud and intent models score every increment; interactions that score high open investigator cases with the transcript row frozen as evidence &mdash; within a minute or two of the call ending, with the full audit trail attached. Datacern does no telephony; it makes what your voice stack produces <i>decidable and defensible</i>.</p>
+  </div>
+  <div class="st-fine reveal">
+    <b>The fine print, on purpose.</b> Freshness is <b>seconds to minutes</b> (watermark polling, 60-second minimum interval) &mdash; not mid-call milliseconds. Department isolation is a workspace boundary enforced at the API on every case, its timeline and its evidence; tenant isolation beneath it is Postgres row-level security. Streams are a <b>separately licensed add-on</b>: creating or resuming one without the SKU is refused with an error that names the entitlement &mdash; turning a stream <i>off</i> is never gated. Fraud and intent models are trained on <b>your</b> data in the platform&rsquo;s governed ML factory; nothing here ships as a pretrained black box.
   </div>
 </section>
 
