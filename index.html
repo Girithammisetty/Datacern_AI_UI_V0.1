@@ -1,580 +1,117 @@
-<!DOCTYPE html><html class="dark scroll-smooth" lang="en" style=""><head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Datacern AI - Enterprise Actionable AI</title>
+<meta content="width=device-width,initial-scale=1.0" name="viewport">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "surface-container-highest": "#26364a",
-                        "slate-800": "#1e293b",
-                        "inverse-surface": "#d3e4fe",
-                        "surface-bright": "#2a3a4f",
-                        "surface-container": "#102034",
-                        "tertiary-fixed-dim": "#bec6e0",
-                        "surface-container-lowest": "#000f21",
-                        "data-cyan": "#06b6d4",
-                        "on-error": "#690005",
-                        "tertiary-container": "#b9c0da",
-                        "on-secondary-fixed": "#23005c",
-                        "error-container": "#93000a",
-                        "secondary-container": "#571bc1",
-                        "on-secondary-container": "#c4abff",
-                        "surface-dim": "#031427",
-                        "on-primary-fixed": "#001f25",
-                        "on-secondary": "#3c0091",
-                        "error": "#ffb4ab",
-                        "surface-variant": "#26364a",
-                        "tertiary": "#d5dcf6",
-                        "secondary-fixed-dim": "#d0bcff",
-                        "on-primary-container": "#005763",
-                        "surface-container-high": "#1b2b3f",
-                        "primary-fixed-dim": "#2fd9f4",
-                        "primary-container": "#22d3ee",
-                        "on-secondary-fixed-variant": "#5516be",
-                        "on-surface-variant": "#bbc9cd",
-                        "secondary-fixed": "#e9ddff",
-                        "on-tertiary-container": "#474e64",
-                        "surface-container-low": "#0b1c30",
-                        "on-tertiary": "#283044",
-                        "on-background": "#d3e4fe",
-                        "data-violet": "#7c3aed",
-                        "primary-fixed": "#a2eeff",
-                        "background": "#031427",
-                        "on-error-container": "#ffdad6",
-                        "secondary": "#d0bcff",
-                        "obsidian-base": "#020617",
-                        "outline-variant": "#3c494c",
-                        "obsidian-surface": "#0f172a",
-                        "slate-400": "#94a3b8",
-                        "glass-border": "rgba(148, 163, 184, 0.1)",
-                        "on-primary-fixed-variant": "#004e5a",
-                        "on-tertiary-fixed": "#131b2e",
-                        "surface": "#031427",
-                        "inverse-on-surface": "#213145",
-                        "on-tertiary-fixed-variant": "#3f465c",
-                        "on-primary": "#00363e",
-                        "inverse-primary": "#006877",
-                        "primary": "#8aebff",
-                        "tertiary-fixed": "#dae2fd",
-                        "on-surface": "#d3e4fe",
-                        "outline": "#859397",
-                        "surface-tint": "#2fd9f4"
-                    },
-                    borderRadius: {
-                        DEFAULT: "0.125rem",
-                        lg: "0.25rem",
-                        xl: "0.5rem",
-                        full: "0.75rem"
-                    },
-                    spacing: {
-                        "margin-desktop": "40px",
-                        "base": "8px",
-                        "gutter": "24px",
-                        "margin-mobile": "16px",
-                        "container-max": "1440px"
-                    },
-                    fontFamily: {
-                        "body-sm": ["Inter"],
-                        "headline-md": ["Geist"],
-                        "body-lg": ["Inter"],
-                        "body-md": ["Inter"],
-                        "headline-lg": ["Geist"],
-                        "headline-xl": ["Geist"],
-                        "mono-code": ["Geist"],
-                        "label-md": ["Geist"],
-                        "label-sm": ["Geist"]
-                    }
-                }
-            }
-        }
-    </script>
 <style>
-        body {
-            background-color: #020617; /* obsidian-base */
-            color: #d3e4fe; /* on-background */
-        }
-        .glass-panel {
-            background-color: rgba(15, 23, 42, 0.7); /* obsidian-surface @ 70% */
-            backdrop-filter: blur(24px);
-            border: 1px solid rgba(148, 163, 184, 0.1); /* glass-border */
-        }
-        .glow-text {
-            text-shadow: 0 0 15px rgba(6, 182, 212, 0.5); /* data-cyan glow */
-        }
-        
-        /* Loop Animation */
-        @keyframes pulse-cyan {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 1; box-shadow: 0 0 20px #06b6d4; }
-        }
-        @keyframes flow-line {
-            0% { stroke-dashoffset: 100; }
-            100% { stroke-dashoffset: 0; }
-        }
-        .loop-node { transition: all 0.3s ease; }
-        .loop-node.active { animation: pulse-cyan 2s infinite; }
-        .flow-path { stroke-dasharray: 100; animation: flow-line 2s linear infinite; }
-        
-        /* Tab Styles */
-        .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    </style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
 </head>
-<body class="font-body-md antialiased min-h-screen flex flex-col relative overflow-x-hidden">
-<!-- Top Navigation -->
-<nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl border-b border-glass-border shadow-[0_0_15px_rgba(6,182,212,0.1)] flex justify-between items-center px-margin-desktop h-16">
-<div class="flex items-center gap-4">
-<span class="font-headline-md text-headline-md font-bold text-data-cyan tracking-tight">Datacern AI</span>
-</div>
-<div class="hidden md:flex items-center gap-gutter">
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-data-cyan transition-colors duration-200" href="#platform">Platform</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-data-cyan transition-colors duration-200" href="#solutions">Solutions</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-data-cyan transition-colors duration-200" href="#security">Security</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-data-cyan transition-colors duration-200" href="#pricing">Pricing</a>
-</div>
-
-</nav>
-<main class="flex-grow pt-16">
-<!-- Hero Section -->
-<section class="relative min-h-[819px] flex items-center justify-center px-margin-desktop py-24 overflow-hidden">
-<div class="absolute inset-0 z-0 opacity-20 pointer-events-none" data-alt="A subtle, highly technical flow field visualization consisting of faint cyan and violet data lines flowing smoothly across a deep black background, evoking a sense of controlled, rapid data movement in an enterprise setting. 8k, digital art, minimal, dark mode." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDirHY3mDLQ-UBFuKtJK8Odj22hSoRjh-3U3BeL85AK57l1Ero4z25JoCuV4DcyQCLg1naPmeYajBVvpFfbhKrEwHIxpq5M-sExy5mIKSFGjO1gu-2PttmqxK7rMnjwFFDoUvWnSSUkTKpCtG4yg6Kk_0YG8tACkO8GHEsld6e06cX1ZCRXjybrbu8RofRDBcAD6mszfKTEK0ReSyhIdmO2o8L_L7nLy62MeSgk1RW-9cFI-31eho2qAA')"></div>
-<div class="relative z-10 max-w-4xl text-center space-y-8">
-<h1 class="font-headline-xl text-[48px] md:text-[64px] font-bold tracking-tight text-white glow-text leading-tight">
-                    Enterprise AI that can act on operational systems.
-                </h1>
-<p class="font-body-lg text-body-lg text-slate-400 max-w-2xl mx-auto">
-                    Because every action is proposed, approved, and provable. Experience the governed write loop for critical infrastructure.
-                </p>
-
-</div>
-</section>
-<!-- Highlights / Capabilities Grid -->
-<section class="px-margin-desktop py-24 relative z-10" id="platform">
-<div class="max-w-container-max mx-auto">
-<div class="text-center mb-16">
-<h2 class="font-headline-lg text-headline-lg text-white mb-4">Core Platform Capabilities</h2>
-<p class="font-body-md text-slate-400 max-w-2xl mx-auto">Secure, scalable AI infrastructure designed for mission-critical enterprise environments.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-<div class="glass-panel p-6 rounded-lg relative overflow-hidden group">
-<div class="h-1 w-full bg-data-cyan absolute top-0 left-0"></div>
-<span class="material-symbols-outlined text-data-cyan text-3xl mb-4">gavel</span>
-<h3 class="font-headline-md text-headline-md text-white mb-2">Governed Write Loop</h3>
-<p class="font-body-sm text-body-sm text-slate-400">Intent mapped to proposals with explicit approval gates ensuring safe execution.</p>
-</div>
-<div class="glass-panel p-6 rounded-lg relative overflow-hidden group">
-<div class="h-1 w-full bg-data-violet absolute top-0 left-0"></div>
-<span class="material-symbols-outlined text-data-violet text-3xl mb-4">memory</span>
-<h3 class="font-headline-md text-headline-md text-white mb-2">Core Capabilities</h3>
-<p class="font-body-sm text-body-sm text-slate-400">Agents, RAG, Analytics, ML, and robust Governance built-in.</p>
-</div>
-<div class="glass-panel p-6 rounded-lg relative overflow-hidden group">
-<div class="h-1 w-full bg-primary absolute top-0 left-0"></div>
-<span class="material-symbols-outlined text-primary text-3xl mb-4">architecture</span>
-<h3 class="font-headline-md text-headline-md text-white mb-2">Solutions Built</h3>
-<p class="font-body-sm text-body-sm text-slate-400">Casework automation, Ask-Your-Data interfaces, and Document Intelligence.</p>
-</div>
-<div class="glass-panel p-6 rounded-lg relative overflow-hidden group">
-<div class="h-1 w-full bg-secondary absolute top-0 left-0"></div>
-<span class="material-symbols-outlined text-secondary text-3xl mb-4">domain</span>
-<h3 class="font-headline-md text-headline-md text-white mb-2">8 Verticals</h3>
-<p class="font-body-sm text-body-sm text-slate-400">Pre-packaged capability packs layered on a secure, neutral core.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Architecture Section -->
-<section class="px-margin-desktop py-24 relative z-10 bg-surface-container/50 border-y border-glass-border" id="security">
-<div class="max-w-container-max mx-auto">
-<div class="text-center mb-16">
-<h2 class="font-headline-lg text-headline-lg text-white mb-4">5-Plane Infrastructure</h2>
-<p class="font-body-md text-slate-400 max-w-2xl mx-auto">A rigorous, auditable architecture separating concerns for maximum security and agility.</p>
-</div>
-<div class="glass-panel p-8 rounded-xl border border-data-cyan/20">
-<div class="flex flex-col lg:flex-row gap-12 items-center">
-<!-- Interactive Diagram Area -->
-<div class="w-full lg:w-1/2 relative h-[400px] flex flex-col justify-between">
-<div class="flex items-center justify-between group cursor-pointer" onclick="activatePlane('data')">
-<div class="w-1/3 text-right pr-4"><h4 class="font-headline-md text-white group-hover:text-data-cyan transition-colors">Data Plane</h4></div>
-<div class="w-2/3 h-16 bg-surface-bright rounded border border-glass-border flex items-center justify-center relative overflow-hidden plane-box" id="plane-data">
-<span class="font-mono-code text-slate-400">Ingestion | Vector Store | Lakes</span>
-<div class="absolute bottom-0 left-0 h-1 bg-data-cyan w-full transform scale-x-0 transition-transform origin-left plane-indicator" style="transform: scaleX(0);"></div>
-</div>
-</div>
-<div class="flex items-center justify-between group cursor-pointer" onclick="activatePlane('case')">
-<div class="w-1/3 text-right pr-4"><h4 class="font-headline-md text-white group-hover:text-data-cyan transition-colors">Case Plane</h4></div>
-<div class="w-2/3 h-16 bg-surface-bright rounded border border-glass-border flex items-center justify-center relative overflow-hidden plane-box" id="plane-case">
-<span class="font-mono-code text-slate-400">Workflow | Orchestration | State</span>
-<div class="absolute bottom-0 left-0 h-1 bg-data-cyan w-full transform scale-x-0 transition-transform origin-left plane-indicator" style="transform: scaleX(0);"></div>
-</div>
-</div>
-<div class="flex items-center justify-between group cursor-pointer" onclick="activatePlane('decision')">
-<div class="w-1/3 text-right pr-4"><h4 class="font-headline-md text-white group-hover:text-data-cyan transition-colors">Decision Plane</h4></div>
-<div class="w-2/3 h-16 bg-surface-bright rounded border border-glass-border flex items-center justify-center relative overflow-hidden plane-box" id="plane-decision">
-<span class="font-mono-code text-slate-400">Agents | RAG | ML Models</span>
-<div class="absolute bottom-0 left-0 h-1 bg-data-cyan w-full transform scale-x-0 transition-transform origin-left plane-indicator" style="transform: scaleX(0);"></div>
-</div>
-</div>
-<div class="flex items-center justify-between group cursor-pointer" onclick="activatePlane('learning')">
-<div class="w-1/3 text-right pr-4"><h4 class="font-headline-md text-white group-hover:text-data-cyan transition-colors">Learning Plane</h4></div>
-<div class="w-2/3 h-16 bg-surface-bright rounded border border-glass-border flex items-center justify-center relative overflow-hidden plane-box" id="plane-learning">
-<span class="font-mono-code text-slate-400">Feedback | Fine-tuning | Evals</span>
-<div class="absolute bottom-0 left-0 h-1 bg-data-cyan w-full transform scale-x-0 transition-transform origin-left plane-indicator" style="transform: scaleX(0);"></div>
-</div>
-</div>
-<div class="flex items-center justify-between group cursor-pointer" onclick="activatePlane('governance')">
-<div class="w-1/3 text-right pr-4"><h4 class="font-headline-md text-white group-hover:text-data-cyan transition-colors">Governance</h4></div>
-<div class="w-2/3 h-16 bg-surface-bright rounded border border-glass-border flex items-center justify-center relative overflow-hidden plane-box" id="plane-governance">
-<span class="font-mono-code text-slate-400">IAM | Audit Logs | Write Loop</span>
-<div class="absolute bottom-0 left-0 h-1 bg-data-cyan w-full transform scale-x-0 transition-transform origin-left plane-indicator" style="transform: scaleX(1);"></div>
-</div>
-</div>
-<!-- Connection Lines -->
-<svg class="absolute inset-0 pointer-events-none w-full h-full" style="z-index:-1;">
-<path d="M 33% 10% L 33% 90%" stroke="rgba(6,182,212,0.2)" stroke-dasharray="4 4" stroke-width="2"></path>
-</svg>
-</div>
-<!-- Info Panel -->
-<div class="w-full lg:w-1/2 bg-surface p-6 rounded-lg border border-slate-800 min-h-[300px]">
-<div class="h-full flex flex-col justify-center items-center text-center text-slate-400 hidden" id="info-default">
-<span class="material-symbols-outlined text-4xl mb-4 opacity-50">touch_app</span>
-<p class="font-body-md">Select a plane to view technical specifications.</p>
-</div>
-<div class="h-full hidden" id="info-data">
-<h4 class="font-headline-md text-data-cyan mb-4 flex items-center gap-2"><span class="material-symbols-outlined">database</span> Data Plane</h4>
-<p class="font-body-sm text-slate-300 mb-4">Foundational layer managing structured and unstructured enterprise data. Implements strict access controls and semantic indexing for rapid retrieval.</p>
-<ul class="list-disc pl-5 font-mono-code text-xs text-slate-400 space-y-2">
-<li class="">Real-time ETL pipelines</li>
-<li class="">Distributed Vector Datastores</li>
-<li class="">Data anonymization &amp; PII masking</li>
-</ul>
-</div>
-<div class="h-full hidden" id="info-case">
-<h4 class="font-headline-md text-data-cyan mb-4 flex items-center gap-2"><span class="material-symbols-outlined">account_tree</span> Case Plane</h4>
-<p class="font-body-sm text-slate-300 mb-4">Orchestrates multi-step workflows and maintains state across long-running asynchronous processes. The backbone of complex automation.</p>
-<ul class="list-disc pl-5 font-mono-code text-xs text-slate-400 space-y-2">
-<li class="">Durable execution engine</li>
-<li class="">State management &amp; persistence</li>
-<li class="">Human-in-the-loop task routing</li>
-</ul>
-</div>
-<div class="h-full hidden" id="info-decision">
-<h4 class="font-headline-md text-data-cyan mb-4 flex items-center gap-2"><span class="material-symbols-outlined">psychology</span> Decision Plane</h4>
-<p class="font-body-sm text-slate-300 mb-4">Houses the cognitive engines. Dynamically routes queries to appropriate LLMs, specialized agents, or traditional heuristics based on intent.</p>
-<ul class="list-disc pl-5 font-mono-code text-xs text-slate-400 space-y-2">
-<li class="">Multi-agent orchestration</li>
-<li class="">Advanced RAG with semantic caching</li>
-<li class="">Deterministic fallback systems</li>
-</ul>
-</div>
-<div class="h-full hidden" id="info-learning">
-<h4 class="font-headline-md text-data-cyan mb-4 flex items-center gap-2"><span class="material-symbols-outlined">model_training</span> Learning Plane</h4>
-<p class="font-body-sm text-slate-300 mb-4">Continuous improvement loop. Captures telemetry, user feedback, and execution outcomes to refine models and prompts over time.</p>
-<ul class="list-disc pl-5 font-mono-code text-xs text-slate-400 space-y-2">
-<li class="">Automated prompt optimization</li>
-<li class="">A/B testing for model variants</li>
-<li class="">RLHF data pipeline</li>
-</ul>
-</div>
-<div class="h-full" id="info-governance">
-<h4 class="font-headline-md text-data-cyan mb-4 flex items-center gap-2"><span class="material-symbols-outlined">policy</span> Governance Plane</h4>
-<p class="font-body-sm text-slate-300 mb-4">The overarching control structure. Enforces policy, manages permissions, and provides cryptographic proof of all system actions.</p>
-<ul class="list-disc pl-5 font-mono-code text-xs text-slate-400 space-y-2">
-<li class="">Immutable audit ledgers</li>
-<li class="">Role-Based Access Control (RBAC)</li>
-<li class="">Automated compliance reporting</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Industry Solutions -->
-<section class="px-margin-desktop py-24 relative z-10" id="solutions">
-<div class="max-w-container-max mx-auto">
-<div class="text-center mb-12">
-<h2 class="font-headline-lg text-headline-lg text-white mb-4">Industry Solutions</h2>
-<p class="font-body-md text-slate-400 max-w-2xl mx-auto">Pre-configured capability packs accelerating time-to-value across key verticals.</p>
-</div>
-<!-- Tabs Navigation -->
-<div class="flex flex-wrap justify-center gap-2 mb-8">
-<button class="tab-btn px-4 py-2 rounded-full border border-slate-700 bg-surface text-slate-300 hover:border-data-cyan hover:text-data-cyan transition-all active:bg-data-cyan/10 active:border-data-cyan active:text-data-cyan" onclick="openTab('tab-banking', this)">Banking</button>
-<button class="tab-btn px-4 py-2 rounded-full border border-slate-700 bg-surface text-slate-300 hover:border-data-cyan hover:text-data-cyan transition-all bg-data-cyan/10 border-data-cyan text-data-cyan" onclick="openTab('tab-finance', this)">Finance Ops</button>
-<button class="tab-btn px-4 py-2 rounded-full border border-slate-700 bg-surface text-slate-300 hover:border-data-cyan hover:text-data-cyan transition-all" onclick="openTab('tab-hc-payer', this)">HC Payer</button>
-<button class="tab-btn px-4 py-2 rounded-full border border-slate-700 bg-surface text-slate-300 hover:border-data-cyan hover:text-data-cyan transition-all" onclick="openTab('tab-hc-provider', this)">HC Provider</button>
-<button class="tab-btn px-4 py-2 rounded-full border border-slate-700 bg-surface text-slate-300 hover:border-data-cyan hover:text-data-cyan transition-all" onclick="openTab('tab-insurance', this)">Insurance</button>
-<button class="tab-btn px-4 py-2 rounded-full border border-slate-700 bg-surface text-slate-300 hover:border-data-cyan hover:text-data-cyan transition-all" onclick="openTab('tab-life', this)">Life Sciences</button>
-<button class="tab-btn px-4 py-2 rounded-full border border-slate-700 bg-surface text-slate-300 hover:border-data-cyan hover:text-data-cyan transition-all" onclick="openTab('tab-mfg', this)">Manufacturing</button>
-<button class="tab-btn px-4 py-2 rounded-full border border-slate-700 bg-surface text-slate-300 hover:border-data-cyan hover:text-data-cyan transition-all" onclick="openTab('tab-trust', this)">Trust &amp; Safety</button>
-</div>
-<!-- Tab Content Containers -->
-<div class="glass-panel p-8 rounded-xl"><!-- Banking -->
-<div class="tab-content" id="tab-banking">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-            <h3 class="font-headline-md text-white mb-2">Retail &amp; Commercial Banking</h3>
-            <p class="font-label-md text-data-cyan mb-4 uppercase tracking-wider">Mechanism: Chargeback Representment</p>
-            <p class="font-body-sm text-slate-400 mb-6">Win disputes with complete evidence. Automate KYC/AML reviews and streamline loan origination document processing.</p>
-            <a href="#" class="inline-flex items-center gap-2 text-data-cyan font-label-md hover:underline">See the pack <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
-        </div>
-        <div class="bg-surface-container rounded-lg p-6 border border-glass-border">
-            <div class="flex items-center gap-3 mb-4 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">40% reduction in onboarding time</span></div>
-            <div class="flex items-center gap-3 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">Automated risk scoring synthesis</span></div>
-        </div>
-    </div>
-</div>
-<!-- Finance Ops -->
-<div class="tab-content active" id="tab-finance">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-            <h3 class="font-headline-md text-white mb-2">Finance Operations</h3>
-            <p class="font-label-md text-data-cyan mb-4 uppercase tracking-wider">Mechanism: AP Invoice Audit</p>
-            <p class="font-body-sm text-slate-400 mb-6">Catch duplicates and errors before they pay. Streamline global accounts payable with automated verification.</p>
-            <a href="#" class="inline-flex items-center gap-2 text-data-cyan font-label-md hover:underline">See the pack <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
-        </div>
-        <div class="bg-surface-container rounded-lg p-6 border border-glass-border">
-            <div class="flex items-center gap-3 mb-4 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">Zero-leakage payment integrity</span></div>
-            <div class="flex items-center gap-3 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">90% faster invoice reconciliation</span></div>
-        </div>
-    </div>
-</div>
-<!-- HC Payer -->
-<div class="tab-content" id="tab-hc-payer">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-            <h3 class="font-headline-md text-white mb-2">Healthcare Payer</h3>
-            <p class="font-label-md text-data-cyan mb-4 uppercase tracking-wider">Mechanism: Payment Integrity</p>
-            <p class="font-body-sm text-slate-400 mb-6">Stop improper payments at the source. Use AI to identify billing anomalies and enforce policy compliance.</p>
-            <a href="#" class="inline-flex items-center gap-2 text-data-cyan font-label-md hover:underline">See the pack <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
-        </div>
-        <div class="bg-surface-container rounded-lg p-6 border border-glass-border">
-            <div class="flex items-center gap-3 mb-4 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">Significant MLR improvement</span></div>
-            <div class="flex items-center gap-3 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">Automated claims adjudication</span></div>
-        </div>
-    </div>
-</div>
-<!-- HC Provider -->
-<div class="tab-content" id="tab-hc-provider">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-            <h3 class="font-headline-md text-white mb-2">Healthcare Provider</h3>
-            <p class="font-label-md text-data-cyan mb-4 uppercase tracking-wider">Mechanism: Revenue Cycle</p>
-            <p class="font-body-sm text-slate-400 mb-6">Recover revenue from denied claims. Automate the appeal process with evidence-backed clinical documentation.</p>
-            <a href="#" class="inline-flex items-center gap-2 text-data-cyan font-label-md hover:underline">See the pack <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
-        </div>
-        <div class="bg-surface-container rounded-lg p-6 border border-glass-border">
-            <div class="flex items-center gap-3 mb-4 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">25% increase in denial recovery</span></div>
-            <div class="flex items-center gap-3 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">Reduced administrative burden</span></div>
-        </div>
-    </div>
-</div>
-<!-- Insurance -->
-<div class="tab-content" id="tab-insurance">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-            <h3 class="font-headline-md text-white mb-2">Insurance</h3>
-            <p class="font-label-md text-data-cyan mb-4 uppercase tracking-wider">Mechanism: Underwriting Intake</p>
-            <p class="font-body-sm text-slate-400 mb-6">Quote faster by ranking appetite. Automatically extract risk data from submissions to prioritize high-value leads.</p>
-            <a href="#" class="inline-flex items-center gap-2 text-data-cyan font-label-md hover:underline">See the pack <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
-        </div>
-        <div class="bg-surface-container rounded-lg p-6 border border-glass-border">
-            <div class="flex items-center gap-3 mb-4 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">3x faster quote turnaround</span></div>
-            <div class="flex items-center gap-3 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">Improved loss ratio accuracy</span></div>
-        </div>
-    </div>
-</div>
-<!-- Life Sciences -->
-<div class="tab-content" id="tab-life">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-            <h3 class="font-headline-md text-white mb-2">Life Sciences</h3>
-            <p class="font-label-md text-data-cyan mb-4 uppercase tracking-wider">Mechanism: Trial Triage</p>
-            <p class="font-body-sm text-slate-400 mb-6">Evidence-based screening for clinical trials. Accelerate patient recruitment with automated eligibility matching.</p>
-            <a href="#" class="inline-flex items-center gap-2 text-data-cyan font-label-md hover:underline">See the pack <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
-        </div>
-        <div class="bg-surface-container rounded-lg p-6 border border-glass-border">
-            <div class="flex items-center gap-3 mb-4 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">50% faster trial enrollment</span></div>
-            <div class="flex items-center gap-3 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">Enhanced protocol compliance</span></div>
-        </div>
-    </div>
-</div>
-<!-- Manufacturing -->
-<div class="tab-content" id="tab-mfg">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-            <h3 class="font-headline-md text-white mb-2">Manufacturing</h3>
-            <p class="font-label-md text-data-cyan mb-4 uppercase tracking-wider">Mechanism: Logistics Audit</p>
-            <p class="font-body-sm text-slate-400 mb-6">Dispute-ready receipt verification. Automate the audit of shipping documents and inventory logs to prevent loss.</p>
-            <a href="#" class="inline-flex items-center gap-2 text-data-cyan font-label-md hover:underline">See the pack <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
-        </div>
-        <div class="bg-surface-container rounded-lg p-6 border border-glass-border">
-            <div class="flex items-center gap-3 mb-4 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">Elimination of shipping disputes</span></div>
-            <div class="flex items-center gap-3 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">Real-time supply chain visibility</span></div>
-        </div>
-    </div>
-</div>
-<!-- Trust & Safety -->
-<div class="tab-content" id="tab-trust">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-            <h3 class="font-headline-md text-white mb-2">Trust &amp; Safety</h3>
-            <p class="font-label-md text-data-cyan mb-4 uppercase tracking-wider">Mechanism: Content Adjudication</p>
-            <p class="font-body-sm text-slate-400 mb-6">Defensible moderation with a human signature. Scale safety operations while maintaining strict governance and auditability.</p>
-            <a href="#" class="inline-flex items-center gap-2 text-data-cyan font-label-md hover:underline">See the pack <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
-        </div>
-        <div class="bg-surface-container rounded-lg p-6 border border-glass-border">
-            <div class="flex items-center gap-3 mb-4 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">100% auditable moderation trail</span></div>
-            <div class="flex items-center gap-3 text-slate-300"><span class="material-symbols-outlined text-green-400">check_circle</span> <span class="">Reduced moderator exposure</span></div>
-        </div>
-    </div>
-</div></div>
-</div>
-</section>
-<!-- ROI Calculator & Pricing -->
-<section class="px-margin-desktop py-24 relative z-10 bg-surface-container/50 border-t border-glass-border" id="pricing">
-<div class="max-w-container-max mx-auto">
-<div class="text-center mb-16">
-<h2 class="font-headline-lg text-headline-lg text-white mb-4">Pricing &amp; Value</h2>
-<p class="font-body-md text-slate-400 max-w-2xl mx-auto">Calculate the operational impact of automating your casework.</p>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-<!-- Calculator Input -->
-<div class="glass-panel p-8 rounded-xl">
-<h3 class="font-headline-md text-white mb-6">ROI Calculator</h3>
-<div class="space-y-6">
-<div>
-<label class="block font-label-md text-slate-300 mb-2">Cases processed per month</label>
-<input class="w-full accent-data-cyan mb-2" id="caseVolume" max="100000" min="1000" oninput="updateCalculator()" step="1000" type="range" value="10000">
-<div class="flex justify-between text-xs font-mono-code text-slate-500">
-<span class="">1k</span>
-<span class="text-data-cyan font-bold" id="caseVolumeDisplay">10,000</span>
-<span class="">100k</span>
-</div>
-</div>
-<div>
-<label class="block font-label-md text-slate-300 mb-2">Average time per case (minutes)</label>
-<input class="w-full accent-data-cyan mb-2" id="timePerCase" max="120" min="5" oninput="updateCalculator()" step="5" type="range" value="30">
-<div class="flex justify-between text-xs font-mono-code text-slate-500">
-<span class="">5m</span>
-<span class="text-data-cyan font-bold" id="timeDisplay">30m</span>
-<span class="">120m</span>
-</div>
-</div>
-<div>
-<label class="block font-label-md text-slate-300 mb-2">Cost per hour ($)</label>
-<input class="w-full accent-data-cyan mb-2" id="costPerHour" max="150" min="15" oninput="updateCalculator()" step="5" type="range" value="45">
-<div class="flex justify-between text-xs font-mono-code text-slate-500">
-<span class="">$15</span>
-<span class="text-data-cyan font-bold" id="costDisplay">$45</span>
-<span class="">$150</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Calculator Output -->
-<div class="bg-surface p-8 rounded-xl border border-data-cyan/30 shadow-[0_0_30px_rgba(6,182,212,0.1)] flex flex-col justify-center h-full">
-<h4 class="font-label-md text-slate-400 uppercase tracking-widest mb-8 text-center">Projected Monthly Savings</h4>
-<div class="text-center mb-8">
-<span class="text-5xl font-headline-xl font-bold text-white glow-text" id="savingsTotal">$135,000</span>
-</div>
-<div class="grid grid-cols-2 gap-4 text-center border-t border-glass-border pt-6">
-<div>
-<span class="block text-xl font-headline-md text-data-cyan mb-1" id="hoursSaved">3,000</span>
-<span class="text-xs font-mono-code text-slate-500">Hours Saved/Month</span>
-</div>
-<div>
-<span class="block text-xl font-headline-md text-data-violet mb-1">60%</span>
-<span class="text-xs font-mono-code text-slate-500">Avg. Automation Rate</span>
-</div>
-</div>
-<p class="text-xs text-slate-500 text-center mt-6">Based on typical Datacern AI deployments achieving 60% task automation.</p>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-obsidian-base py-8 mt-auto border-t border-glass-border">
-<div class="max-w-container-max mx-auto px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter">
-<span class="font-label-md text-label-md text-on-surface">Datacern AI</span>
-<div class="flex gap-4">
-<a class="font-body-sm text-body-sm text-on-tertiary-container hover:text-data-cyan underline decoration-data-cyan/30 transition-colors" href="#">Privacy Policy</a>
-<a class="font-body-sm text-body-sm text-on-tertiary-container hover:text-data-cyan underline decoration-data-cyan/30 transition-colors" href="#">Terms of Service</a>
-<a class="font-body-sm text-body-sm text-on-tertiary-container hover:text-data-cyan underline decoration-data-cyan/30 transition-colors" href="#">Security Architecture</a>
-<a class="font-body-sm text-body-sm text-on-tertiary-container hover:text-data-cyan underline decoration-data-cyan/30 transition-colors" href="#">System Status</a>
-</div>
-<span class="font-body-sm text-body-sm text-on-tertiary-container">© 2024 Datacern AI Platform. All rights reserved.</span>
-</div>
-</footer>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_84 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_84" style="width:100%;height:100%"></div>
 <script>
-    // Architecture Plane Logic
-    function activatePlane(planeId) {
-        // Hide all infos
-        document.querySelectorAll('[id^="info-"]').forEach(el => el.classList.add('hidden'));
-        // Remove active styling from boxes
-        document.querySelectorAll('.plane-indicator').forEach(el => el.style.transform = 'scaleX(0)');
-        
-        // Show selected
-        document.getElementById('info-' + planeId).classList.remove('hidden');
-        document.getElementById('plane-' + planeId).querySelector('.plane-indicator').style.transform = 'scaleX(1)';
-    }
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_84');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
 
-    // Tabs Logic
-    function openTab(tabId, btnElement) {
-        // Hide all content
-        document.querySelectorAll('.tab-content').forEach(el => {
-            el.classList.remove('active');
-        });
-        
-        // Reset all buttons
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.classList.remove('bg-data-cyan/10', 'border-data-cyan', 'text-data-cyan');
-        });
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+camera.position.z = 5;
 
-        // Show selected content
-        document.getElementById(tabId).classList.add('active');
-        
-        // Style active button
-        btnElement.classList.add('bg-data-cyan/10', 'border-data-cyan', 'text-data-cyan');
-    }
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(window.device_pixel_ratio || 1);
+container.appendChild(renderer.domElement);
 
-    // Calculator Logic
-    function updateCalculator() {
-        const volume = document.getElementById('caseVolume').value;
-        const time = document.getElementById('timePerCase').value;
-        const cost = document.getElementById('costPerHour').value;
-        
-        document.getElementById('caseVolumeDisplay').innerText = Number(volume).toLocaleString();
-        document.getElementById('timeDisplay').innerText = time + 'm';
-        document.getElementById('costDisplay').innerText = '$' + cost;
+// Create the pipeline nodes
+const createNode = (x, color, label) => {
+    const geometry = new THREE.IcosahedronGeometry(0.4, 1);
+    const material = new THREE.MeshPhongMaterial({ 
+        color: color, 
+        emissive: color, 
+        emissiveIntensity: 0.5,
+        transparent: true,
+        opacity: 0.8
+    });
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.x = x;
+    scene.add(mesh);
+    return mesh;
+};
 
-        const automationRate = 0.60; // 60%
-        
-        // Total minutes spent = volume * time
-        // Total hours = minutes / 60
-        const totalHours = (volume * time) / 60;
-        const hoursSaved = totalHours * automationRate;
-        const moneySaved = hoursSaved * cost;
+// Colors from Lumina Nexus (Cyan: #22d3ee)
+const accentColor = new THREE.Color(0x22d3ee);
+const ingestionNode = createNode(-3, accentColor, 'Ingestion');
+const modelNode = createNode(0, accentColor, 'Agentic AI');
+const decisionNode = createNode(3, accentColor, 'Decision');
 
-        document.getElementById('hoursSaved').innerText = Math.round(hoursSaved).toLocaleString();
-        document.getElementById('savingsTotal').innerText = '$' + Math.round(moneySaved).toLocaleString();
-    }
+// Particles for flow
+const particleCount = 100;
+const particles = new THREE.BufferGeometry();
+const positions = new Float32Array(particleCount * 3);
+for(let i = 0; i < particleCount; i++) {
+    positions[i*3] = -3 + Math.random() * 6;
+    positions[i*3+1] = (Math.random() - 0.5) * 0.5;
+    positions[i*3+2] = (Math.random() - 0.5) * 0.5;
+}
+particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+const particleMaterial = new THREE.PointsMaterial({ color: 0x22d3ee, size: 0.05, transparent: true, opacity: 0.6 });
+const points = new THREE.Points(particles, particleMaterial);
+scene.add(points);
+
+const light = new THREE.PointLight(0x22d3ee, 2, 10);
+light.position.set(0, 2, 2);
+scene.add(light);
+scene.add(new THREE.AmbientLight(0x404040));
+
+function animate() {
+    requestAnimationFrame(animate);
     
-    // Initialize calculator
-    updateCalculator();
+    const time = Date.now() * 0.001;
     
-    // Initialize first tab button style
-    document.querySelector('.tab-btn').classList.add('bg-data-cyan/10', 'border-data-cyan', 'text-data-cyan');
+    // Animate nodes
+    ingestionNode.rotation.y += 0.01;
+    modelNode.rotation.y += 0.02;
+    decisionNode.rotation.y += 0.01;
+    
+    ingestionNode.position.y = Math.sin(time) * 0.2;
+    modelNode.position.y = Math.cos(time * 1.2) * 0.2;
+    decisionNode.position.y = Math.sin(time * 0.8) * 0.2;
+
+    // Animate particles flow
+    const pos = particles.attributes.position.array;
+    for(let i = 0; i < particleCount; i++) {
+        pos[i*3] += 0.02;
+        if(pos[i*3] > 3.5) pos[i*3] = -3.5;
+    }
+    particles.attributes.position.needsUpdate = true;
+
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+});
+
+animate();
+})();
 </script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_84 -->
 
 
 </body></html>
